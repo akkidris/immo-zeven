@@ -1,0 +1,2064 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ImmoAnalytics Pro · 30 Objekte · Zeven Region · 09.05.2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#06080d;--surface:#0e131c;--surface-2:#161c28;--surface-3:#1e2533;
+  --border:#252b3b;--border-2:#323a4f;
+  --text:#f5f7fa;--text-2:#a8b3c7;--muted:#6c7589;
+  --green:#4ade80;--blue:#60a5fa;--gold:#fbbf24;--orange:#fb923c;--red:#f87171;
+  --grad:linear-gradient(135deg,#4ade80 0%,#22d3ee 100%);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Manrope',sans-serif;min-height:100vh}
+
+.hdr{background:var(--surface);border-bottom:1px solid var(--border);padding:18px 24px}
+.hdr-in{max-width:1480px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:42px;height:42px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:20px}
+.brand h1{font-size:18px;font-weight:800}
+.brand h1 span{font-weight:300;color:var(--text-2)}
+.brand p{font-size:10px;color:var(--muted);letter-spacing:.5px;text-transform:uppercase;margin-top:2px;font-weight:600}
+.market{display:flex;gap:18px;flex-wrap:wrap}
+.m-stat .l{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;font-weight:600}
+.m-stat .v{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:var(--green)}
+
+.banner{max-width:1480px;margin:18px auto 0;padding:14px 22px;background:linear-gradient(90deg,rgba(74,222,128,.08),rgba(34,211,238,.05));border:1px solid rgba(74,222,128,.2);border-radius:10px;font-size:12px;line-height:1.6;color:var(--text-2)}
+.banner strong{color:var(--green)}
+
+.summary{max-width:1480px;margin:14px auto;padding:0 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.s-box{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;text-align:center}
+.s-box .l{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;font-weight:700;margin-bottom:5px}
+.s-box .v{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700}
+.s-box .v.g{color:var(--green)}
+.s-box .v.gold{color:var(--gold)}
+
+.ctrl{background:var(--surface);border-bottom:1px solid var(--border);padding:11px 24px;position:sticky;top:0;z-index:10;backdrop-filter:blur(8px)}
+.ctrl-in{max-width:1480px;margin:0 auto;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.ctrl-grp{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.ctrl-lbl{font-size:9px;font-weight:700;color:var(--muted);letter-spacing:.5px;text-transform:uppercase}
+.btn{padding:6px 11px;border-radius:6px;border:1px solid var(--border-2);background:transparent;color:var(--text-2);font-size:11px;font-weight:600;cursor:pointer;font-family:inherit}
+.btn:hover{background:var(--surface-2);color:var(--text)}
+.btn.on{background:var(--surface-3);border-color:var(--green);color:var(--green)}
+.sep{width:1px;height:18px;background:var(--border-2)}
+
+.grid{max-width:1480px;margin:18px auto 60px;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:16px}
+
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:transform .15s;animation:rise .3s ease both}
+.card:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(0,0,0,.5)}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+.src-bar{padding:6px 14px;font-size:10px;font-weight:600;display:flex;align-items:center;gap:6px}
+.src-direct{background:rgba(74,222,128,.07);color:var(--green);border-bottom:1px solid rgba(74,222,128,.2)}
+.src-listing{background:rgba(96,165,250,.07);color:var(--blue);border-bottom:1px solid rgba(96,165,250,.2)}
+
+.head{padding:12px 16px 0;display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);font-weight:500;display:flex;align-items:center;gap:5px}
+.dot{width:6px;height:6px;border-radius:50%}
+.dot.g{background:var(--green);box-shadow:0 0 8px var(--green)}
+.dot.b{background:var(--blue)}
+.score{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;padding:3px 8px;border-radius:5px;letter-spacing:-.5px}
+.s-A{background:rgba(74,222,128,.15);color:var(--green);border:1px solid rgba(74,222,128,.3)}
+.s-B{background:rgba(251,191,36,.15);color:var(--gold);border:1px solid rgba(251,191,36,.3)}
+.s-C{background:rgba(251,146,60,.15);color:var(--orange);border:1px solid rgba(251,146,60,.3)}
+.s-D{background:rgba(248,113,113,.15);color:var(--red);border:1px solid rgba(248,113,113,.3)}
+
+.title{padding:6px 16px 4px;font-size:15px;font-weight:700;line-height:1.3}
+.subtitle{padding:0 16px 10px;font-size:11px;color:var(--text-2);font-weight:500;display:flex;gap:6px;flex-wrap:wrap}
+.subtitle span:not(:last-child)::after{content:'·';margin-left:6px;color:var(--muted)}
+
+.price{padding:11px 16px;background:var(--surface-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:baseline}
+.price-main{font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;letter-spacing:-1px}
+.price-sub{display:flex;flex-direction:column;align-items:flex-end;gap:2px}
+.price-pqm{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:var(--gold)}
+.price-bench{font-size:9px;color:var(--muted);letter-spacing:.5px;text-transform:uppercase;font-weight:700}
+
+.met{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border)}
+.met-c{padding:8px 4px;text-align:center;border-right:1px solid var(--border)}
+.met-c:last-child{border-right:none}
+.met-l{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;font-weight:600;margin-bottom:2px}
+.met-v{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700}
+.met-v.g{color:var(--green)}.met-v.gold{color:var(--gold)}.met-v.r{color:var(--red)}.met-v.o{color:var(--orange)}
+
+.kpi{padding:10px 16px;display:flex;flex-direction:column;gap:4px;background:rgba(0,0,0,.2)}
+.k{display:flex;justify-content:space-between;font-size:11px;line-height:1.3}
+.k .l{color:var(--text-2);font-weight:500}
+.k .l small{color:var(--muted);font-size:9px;font-weight:400;margin-left:3px}
+.k .v{font-family:'JetBrains Mono',monospace;font-weight:600}
+.k .v.g{color:var(--green)}.k .v.r{color:var(--red)}.k .v.o{color:var(--orange)}.k .v.gold{color:var(--gold)}
+.kpi-div{height:1px;background:var(--border);margin:3px 0}
+.k strong{font-weight:700}
+
+.potential{padding:10px 16px;background:linear-gradient(90deg,rgba(251,191,36,.08),rgba(74,222,128,.05));border-bottom:1px solid var(--border)}
+.potential-h{font-size:9px;color:var(--gold);text-transform:uppercase;letter-spacing:.5px;font-weight:700;margin-bottom:5px}
+.potential-row{display:flex;justify-content:space-between;font-size:11px;line-height:1.3;margin-bottom:2px}
+.potential-row .l{color:var(--text-2);font-weight:500}
+.potential-row .v{font-family:'JetBrains Mono',monospace;font-weight:600}
+.potential-row .v.gold{color:var(--gold)}
+.potential-row .v.g{color:var(--green)}
+.potential-row .v.o{color:var(--orange)}
+.potential-row .v.r{color:var(--red)}
+
+.bdg{padding:7px 16px;display:flex;flex-wrap:wrap;gap:4px;border-bottom:1px solid var(--border)}
+.b{font-size:9px;padding:2px 7px;border-radius:4px;font-weight:600;border:1px solid;letter-spacing:-.1px}
+.b.g{background:rgba(74,222,128,.08);border-color:rgba(74,222,128,.3);color:var(--green)}
+.b.y{background:rgba(251,191,36,.08);border-color:rgba(251,191,36,.3);color:var(--gold)}
+.b.r{background:rgba(248,113,113,.08);border-color:rgba(248,113,113,.3);color:var(--red)}
+.b.bl{background:rgba(96,165,250,.08);border-color:rgba(96,165,250,.3);color:var(--blue)}
+
+.an{padding:10px 16px;font-size:11px;color:var(--text-2);line-height:1.5;flex:1}
+.an strong{color:var(--text);font-weight:700}
+.verd{font-weight:700;padding:6px 10px;border-radius:5px;margin-top:8px;font-size:11px}
+.v-buy{background:rgba(74,222,128,.1);color:var(--green);border:1px solid rgba(74,222,128,.25)}
+.v-pass{background:rgba(248,113,113,.1);color:var(--red);border:1px solid rgba(248,113,113,.25)}
+.v-verh{background:rgba(251,191,36,.1);color:var(--gold);border:1px solid rgba(251,191,36,.25)}
+
+.cta{padding:11px 16px;display:flex;gap:8px;align-items:center;background:rgba(0,0,0,.25)}
+.cta-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:9px 12px;border-radius:7px;font-size:12px;font-weight:700;text-decoration:none;transition:all .15s}
+.cta-btn:hover{transform:translateY(-1px)}
+.cta-pri{background:var(--grad);color:#000;box-shadow:0 4px 12px rgba(74,222,128,.2)}
+.cta-svg{width:12px;height:12px}
+.src{font-size:9px;color:var(--muted);font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+
+.contact{max-width:1480px;margin:0 auto 24px;padding:18px 24px;background:linear-gradient(90deg,rgba(96,165,250,.08),transparent);border-radius:10px;border:1px solid rgba(96,165,250,.2);font-size:12px;color:var(--text-2);display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+.contact strong{color:var(--blue)}
+.contact-tag{padding:4px 10px;background:rgba(96,165,250,.15);color:var(--blue);border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+
+.foot{max-width:1480px;margin:0 auto;padding:24px;font-size:10px;color:var(--muted);line-height:1.7;border-top:1px solid var(--border)}
+.foot strong{color:var(--text-2);text-transform:uppercase;letter-spacing:.5px;font-size:9px}
+.foot-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;margin-top:14px}
+
+@media(max-width:600px){.grid{grid-template-columns:1fr;padding:0 16px}.met{grid-template-columns:repeat(2,1fr)}.summary{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-in">
+    <div class="brand">
+      <div class="logo">📊</div>
+      <div>
+        <h1>Immo<span>Analytics</span> Pro</h1>
+        <p>30 Objekte · Zeven + 30km · Live-Daten 09.05.2026</p>
+      </div>
+    </div>
+    <div class="market">
+      <div class="m-stat"><div class="l">Markt Zeven</div><div class="v">2.220 €/m²</div></div>
+      <div class="m-stat"><div class="l">Mietspiegel</div><div class="v">8,69 €/m²</div></div>
+      <div class="m-stat"><div class="l">Bauzins 25J</div><div class="v">3,80 %</div></div>
+      <div class="m-stat"><div class="l">Top A-Rating</div><div class="v">7 Objekte</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="banner">
+  <strong>📍 Datenquellen:</strong> 5 Objekte aus <strong>Stegeberg Zeven</strong> + 2 aus <strong>Grimberg Zeven</strong> (alle live verifiziert) · 22 aus <strong>Immowelt-Index</strong> + 1 ImmoScout (Status anrufen). Erweitert auf Bremervörde, Rotenburg, Sittensen, Scheeßel, Gnarrenburg.
+</div>
+
+<div class="summary">
+  <div class="s-box"><div class="l">Top-Pick (Score 88)</div><div class="v g">189k MFH Zeven</div></div>
+  <div class="s-box"><div class="l">Bester IST-Cashflow</div><div class="v g">+177€/mo</div></div>
+  <div class="s-box"><div class="l">Bester Vermögensaufbau</div><div class="v gold">+1.264€/mo</div></div>
+  <div class="s-box"><div class="l">Mietpotenzial Stegeberg</div><div class="v gold">+57% mögl.</div></div>
+</div>
+
+<div class="ctrl">
+  <div class="ctrl-in">
+    <div class="ctrl-grp">
+      <span class="ctrl-lbl">Filter</span>
+      <button class="btn on" onclick="filt('alle',this)">Alle (30)</button>
+      <button class="btn" onclick="filt('cfpos',this)">CF positiv</button>
+      <button class="btn" onclick="filt('potential',this)">Mietpotenzial</button>
+      <button class="btn" onclick="filt('zeven',this)">Zeven</button>
+      <button class="btn" onclick="filt('heeslingen',this)">Heeslingen</button>
+      <button class="btn" onclick="filt('selsingen',this)">Selsingen</button>
+      <button class="btn" onclick="filt('bremervoerde',this)">Bremervörde</button>
+      <button class="btn" onclick="filt('rotenburg',this)">Rotenburg</button>
+    </div>
+    <div class="sep"></div>
+    <div class="ctrl-grp">
+      <span class="ctrl-lbl">Sort</span>
+      <button class="btn on" onclick="sort('score',this)">Score ↓</button>
+      <button class="btn" onclick="sort('rendite',this)">Rendite ↓</button>
+      <button class="btn" onclick="sort('cf',this)">Cashflow ↓</button>
+      <button class="btn" onclick="sort('preis',this)">Preis ↑</button>
+    </div>
+  </div>
+</div>
+
+<div class="grid" id="grid">
+
+<div class="card" data-f="zeven immowelt cfpos score-88" data-score="88" data-rendite="7.32" data-preis="189000" data-cf="177">
+  <div class="src-bar src-listing">🔵 Suchindex · Immowelt · #8</div>
+  <div class="head">
+    <div class="tag"><span class="dot b"></span>Zeven Stadt · Stadt</div>
+    <div class="score s-A">A 88</div>
+  </div>
+  <div class="title">MFH 3 WE Bj.1930 (sanierungsbed.)</div>
+  <div class="subtitle">
+    <span>📍 Zeven Stadt</span>
+    <span>🏗 1930</span>
+    <span>🏠 3 WE</span>
+  </div>
+
+  <div class="price">
+    <div class="price-main">189.000 €</div>
+    <div class="price-sub">
+      <div class="price-pqm">1.044 €/m²</div>
+      <div class="price-bench" style="color:var(--green)">52% UNTER MARKT</div>
+    </div>
+  </div>
+
+  <div class="met">
+    <div class="met-c"><div class="met-l">Wfl.</div><div class="met-v">181 m²</div></div>
+    <div class="met-c"><div class="met-l">Grund</div><div class="met-v">722 m²</div></div>
+    <div class="met-c"><div class="met-l">Faktor</div><div class="met-v g">10.5×</div></div>
+    <div class="met-c"><div class="met-l">Provision</div><div class="met-v">1.95%</div></div>
+  </div>
+
+  <div class="kpi">
+    <div class="k"><span class="l">Jahresmiete <small>geschätzt</small></span><span class="v o">17.931 €</span></div>
+    <div class="k"><span class="l">Miete/m²</span><span class="v">8.26 €</span></div>
+    <div class="k"><span class="l">Brutto-Rendite</span><span class="v g">9.49 %</span></div>
+    <div class="k"><span class="l">Netto-Rendite</span><span class="v g">7.32 %</span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">Annuität</span><span class="v">−977 €/mo</span></div>
+    <div class="k"><span class="l">Bewirtschaftung</span><span class="v">−341 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Cashflow netto</strong></span><span class="v g"><strong>+177 €/mo</strong></span></div>
+    <div class="k"><span class="l">+ Tilgung + AfA</span><span class="v g">+614 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Vermögensaufbau</strong></span><span class="v g"><strong>+791 €/mo</strong></span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">NK-Bedarf <small>GrESt+Notar+Makler</small></span><span class="v">16.916 €</span></div>
+  </div>
+
+  <div class="bdg"><span class="b r">Faktor 10,5×!</span><span class="b r">CF positiv</span><span class="b g">3 WE vermietet</span><span class="b r">Sanierungsbudget 30-50k</span><span class="b y">Provision 1,95%</span></div>
+
+  <div class="an">
+    <strong>Analyse:</strong> TOP-FUND! Faktor 10,5× ist außergewöhnlich, Preis 53% unter Markt. CF positiv ab Tag 1. Achtung: "sanierungsbedürftig" — Substanz-Check zwingend (Dach, Elektrik, Feuchtigkeit). Bei 30k Sani CF noch +50€/mo.
+    <div class="verd v-buy">✅ TOP-PRIORITÄT · sofort prüfen</div>
+  </div>
+
+  <div class="cta">
+    <a href="https://www.immowelt.de/expose/2bw9k5e" target="_blank" class="cta-btn cta-pri">
+      <svg class="cta-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Zum Exposé
+    </a>
+    <span class="src">Immowelt</span>
+  </div>
+</div>
+
+<div class="card" data-f="gyhum immowelt cfneg-leicht score-85" data-score="85" data-rendite="5.68" data-preis="449000" data-cf="-196">
+  <div class="src-bar src-listing">🔵 Suchindex · Immowelt · #9</div>
+  <div class="head">
+    <div class="tag"><span class="dot b"></span>Gyhum-Wehldorf · 12km</div>
+    <div class="score s-A">A 85</div>
+  </div>
+  <div class="title">MFH + Imbiss "Otten's Grillstube"</div>
+  <div class="subtitle">
+    <span>📍 Gyhum-Wehldorf</span>
+    <span>🏗 1910 san.2012/2020</span>
+    <span>🏠 4 WE</span>
+  </div>
+
+  <div class="price">
+    <div class="price-main">449.000 €</div>
+    <div class="price-sub">
+      <div class="price-pqm">1.467 €/m²</div>
+      <div class="price-bench" style="color:var(--green)">33% UNTER MARKT</div>
+    </div>
+  </div>
+
+  <div class="met">
+    <div class="met-c"><div class="met-l">Wfl.</div><div class="met-v">306 m²</div></div>
+    <div class="met-c"><div class="met-l">Grund</div><div class="met-v">600 m²</div></div>
+    <div class="met-c"><div class="met-l">Faktor</div><div class="met-v g">13.6×</div></div>
+    <div class="met-c"><div class="met-l">Provision</div><div class="met-v">3.0%</div></div>
+  </div>
+
+  <div class="kpi">
+    <div class="k"><span class="l">Jahresmiete <strong>IST</strong></span><span class="v g">32.952 €</span></div>
+    <div class="k"><span class="l">Miete/m²</span><span class="v">8.97 €</span></div>
+    <div class="k"><span class="l">Brutto-Rendite</span><span class="v g">7.34 %</span></div>
+    <div class="k"><span class="l">Netto-Rendite</span><span class="v g">5.68 %</span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">Annuität</span><span class="v">−2.321 €/mo</span></div>
+    <div class="k"><span class="l">Bewirtschaftung</span><span class="v">−621 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Cashflow netto</strong></span><span class="v o"><strong>-196 €/mo</strong></span></div>
+    <div class="k"><span class="l">+ Tilgung + AfA</span><span class="v g">+1.460 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Vermögensaufbau</strong></span><span class="v g"><strong>+1.264 €/mo</strong></span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">NK-Bedarf <small>GrESt+Notar+Makler</small></span><span class="v">44.900 €</span></div>
+  </div>
+
+  <div class="bdg"><span class="b g">IST 32.952€!</span><span class="b g">voll vermietet</span><span class="b bl">Imbiss seit 1990</span><span class="b r">Energie F (GEG-Risiko)</span><span class="b bl">Anbieter Honsa</span></div>
+
+  <div class="an">
+    <strong>Analyse:</strong> Beste reale Mieteinnahme aller Kandidaten. Faktor 13,6× sehr gut. Verhandeln mit Hinweis auf Energie F → Ziel 410-420k. Klumpenrisiko: 35% Miete = Imbiss.
+    <div class="verd v-buy">✅ TOP · stark mit Verhandlung</div>
+  </div>
+
+  <div class="cta">
+    <a href="https://www.immowelt.de/expose/b92715d4-9a88-4f0a-8f21-719e77496b55" target="_blank" class="cta-btn cta-pri">
+      <svg class="cta-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Zum Exposé
+    </a>
+    <span class="src">Immowelt</span>
+  </div>
+</div>
+
+<div class="card" data-f="bremervoerde immowelt cfpos score-82" data-score="82" data-rendite="6.3" data-preis="360000" data-cf="11">
+  <div class="src-bar src-listing">🔵 Suchindex · Immowelt · #22</div>
+  <div class="head">
+    <div class="tag"><span class="dot b"></span>Hipstedt (Bremervörde) · 25km</div>
+    <div class="score s-A">A 82</div>
+  </div>
+  <div class="title">MFH Hipstedt 321m² · 2.962m² Grund</div>
+  <div class="subtitle">
+    <span>📍 Hipstedt (Bremervörde)</span>
+    <span>🏗 k.A.</span>
+    <span>🏠 3 WE</span>
+  </div>
+
+  <div class="price">
+    <div class="price-main">360.000 €</div>
+    <div class="price-sub">
+      <div class="price-pqm">1.121 €/m²</div>
+      <div class="price-bench" style="color:var(--green)">49% UNTER MARKT</div>
+    </div>
+  </div>
+
+  <div class="met">
+    <div class="met-c"><div class="met-l">Wfl.</div><div class="met-v">321 m²</div></div>
+    <div class="met-c"><div class="met-l">Grund</div><div class="met-v">2.962 m²</div></div>
+    <div class="met-c"><div class="met-l">Faktor</div><div class="met-v g">12.7×</div></div>
+    <div class="met-c"><div class="met-l">Provision</div><div class="met-v">3.57%</div></div>
+  </div>
+
+  <div class="kpi">
+    <div class="k"><span class="l">Jahresmiete <small>geschätzt</small></span><span class="v o">28.473 €</span></div>
+    <div class="k"><span class="l">Miete/m²</span><span class="v">8.26 €</span></div>
+    <div class="k"><span class="l">Brutto-Rendite</span><span class="v g">7.91 %</span></div>
+    <div class="k"><span class="l">Netto-Rendite</span><span class="v g">6.30 %</span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">Annuität</span><span class="v">−1.861 €/mo</span></div>
+    <div class="k"><span class="l">Bewirtschaftung</span><span class="v">−461 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Cashflow netto</strong></span><span class="v g"><strong>+11 €/mo</strong></span></div>
+    <div class="k"><span class="l">+ Tilgung + AfA</span><span class="v g">+1.171 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Vermögensaufbau</strong></span><span class="v g"><strong>+1.083 €/mo</strong></span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">NK-Bedarf <small>GrESt+Notar+Makler</small></span><span class="v">38.052 €</span></div>
+  </div>
+
+  <div class="bdg"><span class="b g">321m² + 2.962m² Riesengrund!</span><span class="b bl">Anbieter WohnWell</span><span class="b r">Faktor 12,7×</span></div>
+
+  <div class="an">
+    <strong>Analyse:</strong> Seltener Fund: Großes MFH 321m² auf 2.962m² Grund (= mögliche Bauplatzteilung) für 1.121€/m². Aber 25km von Zeven — Lage prüfen, Mieternachfrage in Hipstedt klären.
+    <div class="verd v-buy">✅ Großes Potenzial · Lage prüfen</div>
+  </div>
+
+  <div class="cta">
+    <a href="https://www.immowelt.de/expose/2ergf5j" target="_blank" class="cta-btn cta-pri">
+      <svg class="cta-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Zum Exposé
+    </a>
+    <span class="src">Immowelt</span>
+  </div>
+</div>
+
+<div class="card" data-f="selsingen immowelt cfpos score-80" data-score="80" data-rendite="6.27" data-preis="310000" data-cf="19">
+  <div class="src-bar src-listing">🔵 Suchindex · Immowelt · #10</div>
+  <div class="head">
+    <div class="tag"><span class="dot b"></span>Selsingen · 9km</div>
+    <div class="score s-A">A 80</div>
+  </div>
+  <div class="title">Wohnhaus 247m² · 2 Hauseingänge</div>
+  <div class="subtitle">
+    <span>📍 Selsingen</span>
+    <span>🏗 1978</span>
+    <span>🏠 2 WE</span>
+  </div>
+
+  <div class="price">
+    <div class="price-main">310.000 €</div>
+    <div class="price-sub">
+      <div class="price-pqm">1.255 €/m²</div>
+      <div class="price-bench" style="color:var(--green)">42% UNTER MARKT</div>
+    </div>
+  </div>
+
+  <div class="met">
+    <div class="met-c"><div class="met-l">Wfl.</div><div class="met-v">247 m²</div></div>
+    <div class="met-c"><div class="met-l">Grund</div><div class="met-v">1.337 m²</div></div>
+    <div class="met-c"><div class="met-l">Faktor</div><div class="met-v g">12.7×</div></div>
+    <div class="met-c"><div class="met-l">Provision</div><div class="met-v">3.57%</div></div>
+  </div>
+
+  <div class="kpi">
+    <div class="k"><span class="l">Jahresmiete <small>geschätzt</small></span><span class="v o">24.469 €</span></div>
+    <div class="k"><span class="l">Miete/m²</span><span class="v">8.26 €</span></div>
+    <div class="k"><span class="l">Brutto-Rendite</span><span class="v g">7.89 %</span></div>
+    <div class="k"><span class="l">Netto-Rendite</span><span class="v g">6.27 %</span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">Annuität</span><span class="v">−1.602 €/mo</span></div>
+    <div class="k"><span class="l">Bewirtschaftung</span><span class="v">−418 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Cashflow netto</strong></span><span class="v g"><strong>+19 €/mo</strong></span></div>
+    <div class="k"><span class="l">+ Tilgung + AfA</span><span class="v g">+1.009 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Vermögensaufbau</strong></span><span class="v g"><strong>+1.028 €/mo</strong></span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">NK-Bedarf <small>GrESt+Notar+Makler</small></span><span class="v">31.700 €</span></div>
+  </div>
+
+  <div class="bdg"><span class="b bl">1.337m² Grund!</span><span class="b r">CF positiv</span><span class="b g">Selsingen +7,5% YoY</span><span class="b bl">Anbieter LBSi</span></div>
+
+  <div class="an">
+    <strong>Analyse:</strong> Sehr großes Grundstück (1.337m²), 247m² Wohnfläche bei nur 1.255€/m². Selsingen zeigt mit +7,5% YoY den stärksten Wertzuwachs. Wichtig: 2-WE-Aufteilung baulich klären (Bauvoranfrage).
+    <div class="verd v-buy">✅ STARK · Aufteilung prüfen</div>
+  </div>
+
+  <div class="cta">
+    <a href="https://www.immowelt.de/expose/2f8sq5e" target="_blank" class="cta-btn cta-pri">
+      <svg class="cta-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Zum Exposé
+    </a>
+    <span class="src">Immowelt</span>
+  </div>
+</div>
+
+<div class="card" data-f="heeslingen potential stegeberg score-78" data-score="78" data-rendite="4.65" data-preis="490000" data-cf="-634">
+  <div class="src-bar src-direct">🟢 Live verifiziert · Stegeberg Zeven · #3</div>
+  <div class="head">
+    <div class="tag"><span class="dot g"></span>Heeslingen · 7km</div>
+    <div class="score s-A">A 78</div>
+  </div>
+  <div class="title">WGH · 2 Häuser auf 1.045m²</div>
+  <div class="subtitle">
+    <span>📍 Heeslingen</span>
+    <span>🏗 k.A.</span>
+    <span>🏠 4 WE</span>
+  </div>
+
+  <div class="price">
+    <div class="price-main">490.000 €</div>
+    <div class="price-sub">
+      <div class="price-pqm">1.216 €/m²</div>
+      <div class="price-bench" style="color:var(--green)">44% UNTER MARKT</div>
+    </div>
+  </div>
+
+  <div class="met">
+    <div class="met-c"><div class="met-l">Wfl.</div><div class="met-v">403 m²</div></div>
+    <div class="met-c"><div class="met-l">Grund</div><div class="met-v">1.045 m²</div></div>
+    <div class="met-c"><div class="met-l">Faktor</div><div class="met-v gold">16.0×</div></div>
+    <div class="met-c"><div class="met-l">Provision</div><div class="met-v">3.57%</div></div>
+  </div>
+
+  <div class="kpi">
+    <div class="k"><span class="l">Jahresmiete <strong>IST</strong></span><span class="v g">30.600 €</span></div>
+    <div class="k"><span class="l">Miete/m²</span><span class="v">6.33 €</span></div>
+    <div class="k"><span class="l">Brutto-Rendite</span><span class="v gold">6.24 %</span></div>
+    <div class="k"><span class="l">Netto-Rendite</span><span class="v gold">4.65 %</span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">Annuität</span><span class="v">−2.533 €/mo</span></div>
+    <div class="k"><span class="l">Bewirtschaftung</span><span class="v">−651 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Cashflow netto</strong></span><span class="v r"><strong>-634 €/mo</strong></span></div>
+    <div class="k"><span class="l">+ Tilgung + AfA</span><span class="v g">+1.593 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Vermögensaufbau</strong></span><span class="v g"><strong>+960 €/mo</strong></span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">NK-Bedarf <small>GrESt+Notar+Makler</small></span><span class="v">51.793 €</span></div>
+  </div>
+
+  <div class="potential">
+    <div class="potential-h">⚡ MIETPOTENZIAL bei Marktniveau (8,69€/m²)</div>
+    <div class="potential-row"><span class="l">Jahresmiete optimiert</span><span class="v g">42.025 €</span></div>
+    <div class="potential-row"><span class="l">Mietsteigerung möglich</span><span class="v gold">+37%</span></div>
+    <div class="potential-row"><span class="l">Cashflow optimiert</span><span class="v g">+72 €/mo</span></div>
+  </div>
+  <div class="bdg"><span class="b g">IST 30.600€</span><span class="b bl">2 Häuser flexibel</span><span class="b bl">Wohn-/Gewerbe-Mix</span><span class="b bl">präsente Lage Bremer Str.</span></div>
+
+  <div class="an">
+    <strong>Analyse:</strong> Komplex-Objekt: vorderes Haus 180m² (vermietet, freilieferbar), hinteres Haus EG Büro 73+55m² + DG schöne Wohnung 95m². Bei Mietanpassung CF positiv. Energie-Klasse offen.
+    <div class="verd v-buy">✅ STARK · Top-Diversifikation</div>
+  </div>
+
+  <div class="cta">
+    <a href="https://www.stegeberg.de/kaufangebote-2/kaufangebote-3/grosses-massives-wohnhaus-8-zimmer-2.html" target="_blank" class="cta-btn cta-pri">
+      <svg class="cta-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Zum Exposé
+    </a>
+    <span class="src">Stegeberg Zeven</span>
+  </div>
+</div>
+
+<div class="card" data-f="heeslingen immoscout score-78" data-score="78" data-rendite="6.55" data-preis="285000" data-cf="-120">
+  <div class="src-bar src-listing">🔵 Suchindex · ImmoScout24 · #18</div>
+  <div class="head">
+    <div class="tag"><span class="dot b"></span>Heeslingen-Sassenholz · 11km</div>
+    <div class="score s-A">A 78</div>
+  </div>
+  <div class="title">ZFH Sassenholz · 4 Bäder, 2 Eingänge</div>
+  <div class="subtitle">
+    <span>📍 Heeslingen-Sassenholz</span>
+    <span>🏗 1925, mod. seit 2001</span>
+    <span>🏠 2 WE</span>
+  </div>
+
+  <div class="price">
+    <div class="price-main">285.000 €</div>
+    <div class="price-sub">
+      <div class="price-pqm">1.208 €/m²</div>
+      <div class="price-bench" style="color:var(--green)">45% UNTER MARKT</div>
+    </div>
+  </div>
+
+  <div class="met">
+    <div class="met-c"><div class="met-l">Wfl.</div><div class="met-v">236 m²</div></div>
+    <div class="met-c"><div class="met-l">Grund</div><div class="met-v">800 m²</div></div>
+    <div class="met-c"><div class="met-l">Faktor</div><div class="met-v g">12.2×</div></div>
+    <div class="met-c"><div class="met-l">Provision</div><div class="met-v">3.57%</div></div>
+  </div>
+
+  <div class="kpi">
+    <div class="k"><span class="l">Jahresmiete <small>geschätzt</small></span><span class="v o">23.388 €</span></div>
+    <div class="k"><span class="l">Miete/m²</span><span class="v">8.26 €</span></div>
+    <div class="k"><span class="l">Brutto-Rendite</span><span class="v g">8.21 %</span></div>
+    <div class="k"><span class="l">Netto-Rendite</span><span class="v g">6.55 %</span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">Annuität</span><span class="v">−1.473 €/mo</span></div>
+    <div class="k"><span class="l">Bewirtschaftung</span><span class="v">−398 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Cashflow netto</strong></span><span class="v o"><strong>-120 €/mo</strong></span></div>
+    <div class="k"><span class="l">+ Tilgung + AfA</span><span class="v g">+927 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Vermögensaufbau</strong></span><span class="v g"><strong>+807 €/mo</strong></span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">NK-Bedarf <small>GrESt+Notar+Makler</small></span><span class="v">30.187 €</span></div>
+  </div>
+
+  <div class="bdg"><span class="b g">236m² + DG-Reserve</span><span class="b bl">4 Bäder fertig</span><span class="b bl">2 Hauseingänge</span></div>
+
+  <div class="an">
+    <strong>Analyse:</strong> Großes Objekt mit allem für 2 WE: 4 Bäder, 2 Eingänge. Risiko: Sassenholz nur 140 Einwohner = dünne Mietnachfrage, längere Vermietungszeiten.
+    <div class="verd v-buy">✅ Stark · Substanzcheck wichtig</div>
+  </div>
+
+  <div class="cta">
+    <a href="https://www.immobilienscout24.de/expose/90095826" target="_blank" class="cta-btn cta-pri">
+      <svg class="cta-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Zum Exposé
+    </a>
+    <span class="src">ImmoScout24</span>
+  </div>
+</div>
+
+<div class="card" data-f="zeven potential stegeberg score-76" data-score="76" data-rendite="2.63" data-preis="665000" data-cf="-1981">
+  <div class="src-bar src-direct">🟢 Live verifiziert · Stegeberg Zeven · #1</div>
+  <div class="head">
+    <div class="tag"><span class="dot g"></span>Zeven Stadt · Stadt</div>
+    <div class="score s-B">B 76</div>
+  </div>
+  <div class="title">MFH 6 WE + Bauplatz-Reserve</div>
+  <div class="subtitle">
+    <span>📍 Zeven Stadt</span>
+    <span>🏗 1968</span>
+    <span>🏠 6 WE</span>
+  </div>
+
+  <div class="price">
+    <div class="price-main">665.000 €</div>
+    <div class="price-sub">
+      <div class="price-pqm">1.591 €/m²</div>
+      <div class="price-bench">am Marktniveau</div>
+    </div>
+  </div>
+
+  <div class="met">
+    <div class="met-c"><div class="met-l">Wfl.</div><div class="met-v">418 m²</div></div>
+    <div class="met-c"><div class="met-l">Grund</div><div class="met-v">1.437 m²</div></div>
+    <div class="met-c"><div class="met-l">Faktor</div><div class="met-v r">24.0×</div></div>
+    <div class="met-c"><div class="met-l">Provision</div><div class="met-v">7.14%</div></div>
+  </div>
+
+  <div class="kpi">
+    <div class="k"><span class="l">Jahresmiete <strong>IST</strong></span><span class="v g">27.700 €</span></div>
+    <div class="k"><span class="l">Miete/m²</span><span class="v">5.52 €</span></div>
+    <div class="k"><span class="l">Brutto-Rendite</span><span class="v r">4.17 %</span></div>
+    <div class="k"><span class="l">Netto-Rendite</span><span class="v r">2.63 %</span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">Annuität</span><span class="v">−3.437 €/mo</span></div>
+    <div class="k"><span class="l">Bewirtschaftung</span><span class="v">−852 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Cashflow netto</strong></span><span class="v r"><strong>-1.981 €/mo</strong></span></div>
+    <div class="k"><span class="l">+ Tilgung + AfA</span><span class="v g">+2.162 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Vermögensaufbau</strong></span><span class="v gold"><strong>+182 €/mo</strong></span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">NK-Bedarf <small>GrESt+Notar+Makler</small></span><span class="v">94.031 €</span></div>
+  </div>
+
+  <div class="potential">
+    <div class="potential-h">⚡ MIETPOTENZIAL bei Marktniveau (8,69€/m²)</div>
+    <div class="potential-row"><span class="l">Jahresmiete optimiert</span><span class="v g">43.581 €</span></div>
+    <div class="potential-row"><span class="l">Mietsteigerung möglich</span><span class="v gold">+57%</span></div>
+    <div class="potential-row"><span class="l">Cashflow optimiert</span><span class="v r">-658 €/mo</span></div>
+  </div>
+  <div class="bdg"><span class="b g">6WE vermietet</span><span class="b g">Heizung 2018</span><span class="b g">3WE saniert 2020</span><span class="b y">Bauplatz-Reserve!</span><span class="b r">Provision 7,14% hoch</span></div>
+
+  <div class="an">
+    <strong>Analyse:</strong> Profi-Klassiker mit DOPPEL-JOKER: (1) Mieten 5,52€/m² liegen 36% unter Markt — bei Neuvermietung +57% Potenzial. (2) Bauvorbescheid für weiteres 6-Parteien-Haus auf gleichem Grundstück = riesiges Wertpotenzial. Substanz solide (Heizung 2018, Fenster 2019, 3 WE saniert 2020).
+    <div class="verd v-verh">⚠️ STARK · Verhandeln auf 580k, dann Top-Kauf</div>
+  </div>
+
+  <div class="cta">
+    <a href="https://www.stegeberg.de/kaufangebote-2/kaufangebote-3/zeven-mfhaus-mit-6-einheiten-bauplatz.html" target="_blank" class="cta-btn cta-pri">
+      <svg class="cta-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Zum Exposé
+    </a>
+    <span class="src">Stegeberg Zeven</span>
+  </div>
+</div>
+
+<div class="card" data-f="zeven potential stegeberg score-70" data-score="70" data-rendite="2.51" data-preis="649000" data-cf="-1994">
+  <div class="src-bar src-direct">🟢 Live verifiziert · Stegeberg Zeven · #2</div>
+  <div class="head">
+    <div class="tag"><span class="dot g"></span>Zeven-City · Stadt</div>
+    <div class="score s-B">B 70</div>
+  </div>
+  <div class="title">MFH-City 5 WE + 90m² Ausbau</div>
+  <div class="subtitle">
+    <span>📍 Zeven-City</span>
+    <span>🏗 1960/2011</span>
+    <span>🏠 5 WE</span>
+  </div>
+
+  <div class="price">
+    <div class="price-main">649.000 €</div>
+    <div class="price-sub">
+      <div class="price-pqm">2.142 €/m²</div>
+      <div class="price-bench">am Marktniveau</div>
+    </div>
+  </div>
+
+  <div class="met">
+    <div class="met-c"><div class="met-l">Wfl.</div><div class="met-v">303 m²</div></div>
+    <div class="met-c"><div class="met-l">Grund</div><div class="met-v">849 m²</div></div>
+    <div class="met-c"><div class="met-l">Faktor</div><div class="met-v r">25.0×</div></div>
+    <div class="met-c"><div class="met-l">Provision</div><div class="met-v">5.0%</div></div>
+  </div>
+
+  <div class="kpi">
+    <div class="k"><span class="l">Jahresmiete <strong>IST</strong></span><span class="v g">26.000 €</span></div>
+    <div class="k"><span class="l">Miete/m²</span><span class="v">7.15 €</span></div>
+    <div class="k"><span class="l">Brutto-Rendite</span><span class="v r">4.01 %</span></div>
+    <div class="k"><span class="l">Netto-Rendite</span><span class="v r">2.51 %</span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">Annuität</span><span class="v">−3.354 €/mo</span></div>
+    <div class="k"><span class="l">Bewirtschaftung</span><span class="v">−807 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Cashflow netto</strong></span><span class="v r"><strong>-1.994 €/mo</strong></span></div>
+    <div class="k"><span class="l">+ Tilgung + AfA</span><span class="v g">+2.110 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Vermögensaufbau</strong></span><span class="v gold"><strong>+116 €/mo</strong></span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">NK-Bedarf <small>GrESt+Notar+Makler</small></span><span class="v">77.880 €</span></div>
+  </div>
+
+  <div class="potential">
+    <div class="potential-h">⚡ MIETPOTENZIAL bei Marktniveau (8,69€/m²)</div>
+    <div class="potential-row"><span class="l">Jahresmiete optimiert</span><span class="v g">31.598 €</span></div>
+    <div class="potential-row"><span class="l">Mietsteigerung möglich</span><span class="v gold">+22%</span></div>
+    <div class="potential-row"><span class="l">Cashflow optimiert</span><span class="v r">-1.445 €/mo</span></div>
+  </div>
+  <div class="bdg"><span class="b g">5 WE vermietet</span><span class="b g">Heizung 2020</span><span class="b y">Energie B (72,9)</span><span class="b g">+90m² Ausbau-Reserve</span></div>
+
+  <div class="an">
+    <strong>Analyse:</strong> Hochwertige Substanz (kernsaniert 2011/12). Zwei Hebel: Mietanpassung 7,15→8,69€/m² (+5,6k/J) UND Ausbau der 90m² Lager-Fläche zu zusätzlicher WE (+9,4k/J). Gesamtpotenzial 41k Jahresmiete = 6,3% Brutto.
+    <div class="verd v-verh">⚠️ Nur mit Mietsteigerungs-Plan</div>
+  </div>
+
+  <div class="cta">
+    <a href="https://www.stegeberg.de/kaufangebote-2/kaufangebote-3/inhalts-template-30.html" target="_blank" class="cta-btn cta-pri">
+      <svg class="cta-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Zum Exposé
+    </a>
+    <span class="src">Stegeberg Zeven</span>
+  </div>
+</div>
+
+<div class="card" data-f="heeslingen grimberg reserviert score-68" data-score="68" data-rendite="6.47" data-preis="220000" data-cf="37">
+  <div class="src-bar src-direct">🟢 Live verifiziert · Grimberg Zeven · #7</div>
+  <div class="head">
+    <div class="tag"><span class="dot g"></span>Heeslingen-Meinstedt · 8km</div>
+    <div class="score s-B">B 68</div>
+  </div>
+  <div class="title">Bungalow 9 Zi 200m²</div>
+  <div class="subtitle">
+    <span>📍 Heeslingen-Meinstedt</span>
+    <span>🏗 k.A.</span>
+    <span>🏠 2 WE</span>
+  </div>
+
+  <div class="price">
+    <div class="price-main">220.000 €</div>
+    <div class="price-sub">
+      <div class="price-pqm">1.100 €/m²</div>
+      <div class="price-bench" style="color:var(--green)">50% UNTER MARKT</div>
+    </div>
+  </div>
+
+  <div class="met">
+    <div class="met-c"><div class="met-l">Wfl.</div><div class="met-v">200 m²</div></div>
+    <div class="met-c"><div class="met-l">Grund</div><div class="met-v">800 m²</div></div>
+    <div class="met-c"><div class="met-l">Faktor</div><div class="met-v g">11.1×</div></div>
+    <div class="met-c"><div class="met-l">Provision</div><div class="met-v">7.14%</div></div>
+  </div>
+
+  <div class="kpi">
+    <div class="k"><span class="l">Jahresmiete <small>geschätzt</small></span><span class="v o">19.836 €</span></div>
+    <div class="k"><span class="l">Miete/m²</span><span class="v">8.26 €</span></div>
+    <div class="k"><span class="l">Brutto-Rendite</span><span class="v g">9.02 %</span></div>
+    <div class="k"><span class="l">Netto-Rendite</span><span class="v g">6.47 %</span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">Annuität</span><span class="v">−1.138 €/mo</span></div>
+    <div class="k"><span class="l">Bewirtschaftung</span><span class="v">−478 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Cashflow netto</strong></span><span class="v g"><strong>+37 €/mo</strong></span></div>
+    <div class="k"><span class="l">+ Tilgung + AfA</span><span class="v g">+716 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Vermögensaufbau</strong></span><span class="v g"><strong>+755 €/mo</strong></span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">NK-Bedarf <small>GrESt+Notar+Makler</small></span><span class="v">31.108 €</span></div>
+  </div>
+
+  <div class="bdg"><span class="b r">RESERVIERT</span><span class="b bl">200m² 9 Zimmer</span><span class="b bl">Bungalow</span><span class="b r">Provision 7,14% hoch</span></div>
+
+  <div class="an">
+    <strong>Analyse:</strong> Großer Bungalow zu sehr gutem Preis (1.100€/m²). Faktor 11× theoretisch top. ABER: RESERVIERT — auf Warteliste setzen lassen, falls Reservierung platzt.
+    <div class="verd v-verh">⚠️ Reserviert · Warteliste!</div>
+  </div>
+
+  <div class="cta">
+    <a href="https://www.grimberg-immobilien.de/immobilien/einfamilienhaus-in-heeslingen-meinstedt-kauf-92" target="_blank" class="cta-btn cta-pri">
+      <svg class="cta-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Zum Exposé
+    </a>
+    <span class="src">Grimberg Zeven</span>
+  </div>
+</div>
+
+<div class="card" data-f="zeven stegeberg reserviert score-65" data-score="65" data-rendite="5.0" data-preis="375000" data-cf="-407">
+  <div class="src-bar src-direct">🟢 Live verifiziert · Stegeberg Zeven · #5</div>
+  <div class="head">
+    <div class="tag"><span class="dot g"></span>Zeven Stadt · Stadt</div>
+    <div class="score s-B">B 65</div>
+  </div>
+  <div class="title">WGH 4 WE + Laden City</div>
+  <div class="subtitle">
+    <span>📍 Zeven Stadt</span>
+    <span>🏗 Altbau</span>
+    <span>🏠 5 WE</span>
+  </div>
+
+  <div class="price">
+    <div class="price-main">375.000 €</div>
+    <div class="price-sub">
+      <div class="price-pqm">1.389 €/m²</div>
+      <div class="price-bench" style="color:var(--green)">36% UNTER MARKT</div>
+    </div>
+  </div>
+
+  <div class="met">
+    <div class="met-c"><div class="met-l">Wfl.</div><div class="met-v">270 m²</div></div>
+    <div class="met-c"><div class="met-l">Grund</div><div class="met-v">400 m²</div></div>
+    <div class="met-c"><div class="met-l">Faktor</div><div class="met-v gold">15.0×</div></div>
+    <div class="met-c"><div class="met-l">Provision</div><div class="met-v">3.57%</div></div>
+  </div>
+
+  <div class="kpi">
+    <div class="k"><span class="l">Jahresmiete <strong>IST</strong></span><span class="v g">25.000 €</span></div>
+    <div class="k"><span class="l">Miete/m²</span><span class="v">7.72 €</span></div>
+    <div class="k"><span class="l">Brutto-Rendite</span><span class="v gold">6.67 %</span></div>
+    <div class="k"><span class="l">Netto-Rendite</span><span class="v gold">5.00 %</span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">Annuität</span><span class="v">−1.938 €/mo</span></div>
+    <div class="k"><span class="l">Bewirtschaftung</span><span class="v">−553 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Cashflow netto</strong></span><span class="v o"><strong>-407 €/mo</strong></span></div>
+    <div class="k"><span class="l">+ Tilgung + AfA</span><span class="v g">+1.219 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Vermögensaufbau</strong></span><span class="v g"><strong>+700 €/mo</strong></span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">NK-Bedarf <small>GrESt+Notar+Makler</small></span><span class="v">39.637 €</span></div>
+  </div>
+
+  <div class="potential">
+    <div class="potential-h">⚡ MIETPOTENZIAL bei Marktniveau (8,69€/m²)</div>
+    <div class="potential-row"><span class="l">Jahresmiete optimiert</span><span class="v g">28.135 €</span></div>
+    <div class="potential-row"><span class="l">Mietsteigerung möglich</span><span class="v gold">+12%</span></div>
+    <div class="potential-row"><span class="l">Cashflow optimiert</span><span class="v o">-150 €/mo</span></div>
+  </div>
+  <div class="bdg"><span class="b g">4 WE + Laden Kinderschutzbund</span><span class="b r">Faktor 15×</span><span class="b r">Feuchtigkeit 1 WE</span><span class="b r">RESERVIERT</span></div>
+
+  <div class="an">
+    <strong>Analyse:</strong> Anlageobjekt fußläufig zur City. Achtung: Probleme mit Feuchtigkeit + Differenzen mit einem Mieter laut Beschreibung. Ladenlokal 98m² mit fester Vermietung.
+    <div class="verd v-verh">⚠️ Reserviert · gut wenn frei</div>
+  </div>
+
+  <div class="cta">
+    <a href="https://www.stegeberg.de/kaufangebote-2/kaufangebote-3/charmantes-anlageobjekt-in-praesenter-lage.html" target="_blank" class="cta-btn cta-pri">
+      <svg class="cta-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Zum Exposé
+    </a>
+    <span class="src">Stegeberg Zeven</span>
+  </div>
+</div>
+
+<div class="card" data-f="rotenburg immowelt etw score-65" data-score="65" data-rendite="4.2" data-preis="65000" data-cf="-163">
+  <div class="src-bar src-listing">🔵 Suchindex · Immowelt · #28</div>
+  <div class="head">
+    <div class="tag"><span class="dot b"></span>Rotenburg/Wümme · 30km</div>
+    <div class="score s-B">B 65</div>
+  </div>
+  <div class="title">ETW 39m² Rotenburg vermietet</div>
+  <div class="subtitle">
+    <span>📍 Rotenburg/Wümme</span>
+    <span>🏗 k.A.</span>
+    <span>🏠 1 WE</span>
+  </div>
+
+  <div class="price">
+    <div class="price-main">65.000 €</div>
+    <div class="price-sub">
+      <div class="price-pqm">1.667 €/m²</div>
+      <div class="price-bench">am Marktniveau</div>
+    </div>
+  </div>
+
+  <div class="met">
+    <div class="met-c"><div class="met-l">Wfl.</div><div class="met-v">39 m²</div></div>
+    <div class="met-c"><div class="met-l">Grund</div><div class="met-v">- m²</div></div>
+    <div class="met-c"><div class="met-l">Faktor</div><div class="met-v gold">16.2×</div></div>
+    <div class="met-c"><div class="met-l">Provision</div><div class="met-v">3.0%</div></div>
+  </div>
+
+  <div class="kpi">
+    <div class="k"><span class="l">Jahresmiete <strong>IST</strong></span><span class="v g">4.020 €</span></div>
+    <div class="k"><span class="l">Miete/m²</span><span class="v">8.59 €</span></div>
+    <div class="k"><span class="l">Brutto-Rendite</span><span class="v gold">6.18 %</span></div>
+    <div class="k"><span class="l">Netto-Rendite</span><span class="v gold">4.20 %</span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">Annuität</span><span class="v">−336 €/mo</span></div>
+    <div class="k"><span class="l">Bewirtschaftung</span><span class="v">−162 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Cashflow netto</strong></span><span class="v o"><strong>-163 €/mo</strong></span></div>
+    <div class="k"><span class="l">+ Tilgung + AfA</span><span class="v g">+211 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Vermögensaufbau</strong></span><span class="v gold"><strong>+59 €/mo</strong></span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">NK-Bedarf <small>GrESt+Notar+Makler</small></span><span class="v">6.500 €</span></div>
+  </div>
+
+  <div class="bdg"><span class="b g">IST 335€/mo</span><span class="b g">günstigster Einstieg</span><span class="b g">vermietet</span></div>
+
+  <div class="an">
+    <strong>Analyse:</strong> Mini-ETW als Einstieg in den Markt. Faktor 16,2× sehr gut für ETW-Bereich. Mietsteigerung hat lange nicht stattgefunden = Potenzial bei Eigentümerwechsel.
+    <div class="verd v-buy">✅ Günstiger Einstieg</div>
+  </div>
+
+  <div class="cta">
+    <a href="https://www.immowelt.de/expose/27z3m5s" target="_blank" class="cta-btn cta-pri">
+      <svg class="cta-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Zum Exposé
+    </a>
+    <span class="src">Immowelt</span>
+  </div>
+</div>
+
+<div class="card" data-f="zeven immowelt score-60" data-score="60" data-rendite="4.66" data-preis="350000" data-cf="-486">
+  <div class="src-bar src-listing">🔵 Suchindex · Immowelt · #15</div>
+  <div class="head">
+    <div class="tag"><span class="dot b"></span>Zeven · Stadt</div>
+    <div class="score s-B">B 60</div>
+  </div>
+  <div class="title">WGH 1969 · 4 WE-Potenzial</div>
+  <div class="subtitle">
+    <span>📍 Zeven</span>
+    <span>🏗 1969</span>
+    <span>🏠 4 WE</span>
+  </div>
+
+  <div class="price">
+    <div class="price-main">350.000 €</div>
+    <div class="price-sub">
+      <div class="price-pqm">1.591 €/m²</div>
+      <div class="price-bench">am Marktniveau</div>
+    </div>
+  </div>
+
+  <div class="met">
+    <div class="met-c"><div class="met-l">Wfl.</div><div class="met-v">220 m²</div></div>
+    <div class="met-c"><div class="met-l">Grund</div><div class="met-v">330 m²</div></div>
+    <div class="met-c"><div class="met-l">Faktor</div><div class="met-v gold">16.1×</div></div>
+    <div class="met-c"><div class="met-l">Provision</div><div class="met-v">3.57%</div></div>
+  </div>
+
+  <div class="kpi">
+    <div class="k"><span class="l">Jahresmiete <small>geschätzt</small></span><span class="v o">18.159 €</span></div>
+    <div class="k"><span class="l">Miete/m²</span><span class="v">8.26 €</span></div>
+    <div class="k"><span class="l">Brutto-Rendite</span><span class="v gold">6.24 %</span></div>
+    <div class="k"><span class="l">Netto-Rendite</span><span class="v gold">4.66 %</span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">Annuität</span><span class="v">−1.809 €/mo</span></div>
+    <div class="k"><span class="l">Bewirtschaftung</span><span class="v">−491 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Cashflow netto</strong></span><span class="v o"><strong>-486 €/mo</strong></span></div>
+    <div class="k"><span class="l">+ Tilgung + AfA</span><span class="v g">+1.138 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Vermögensaufbau</strong></span><span class="v g"><strong>+700 €/mo</strong></span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">NK-Bedarf <small>GrESt+Notar+Makler</small></span><span class="v">36.995 €</span></div>
+  </div>
+
+  <div class="bdg"><span class="b bl">3 Etagen</span><span class="b bl">330m² Grundstück</span><span class="b bl">4 WE Ausbaupotenzial</span></div>
+
+  <div class="an">
+    <strong>Analyse:</strong> Wohn-/Geschäftshaus 1969 mit Ausbaupotenzial: EG Geschäftsbereich, OG+DG bis zu 4 WE ausbaubar. Kleines Grundstück, aber kompletter Ausbau interessant.
+    <div class="verd v-verh">⚠️ Mit Ausbau-Plan ok</div>
+  </div>
+
+  <div class="cta">
+    <a href="https://www.immowelt.de/suche/zeven/haeuser/kaufen" target="_blank" class="cta-btn cta-pri">
+      <svg class="cta-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Zum Exposé
+    </a>
+    <span class="src">Immowelt</span>
+  </div>
+</div>
+
+<div class="card" data-f="zeven immowelt score-60" data-score="60" data-rendite="3.27" data-preis="159500" data-cf="-296">
+  <div class="src-bar src-listing">🔵 Suchindex · Immowelt · #20</div>
+  <div class="head">
+    <div class="tag"><span class="dot b"></span>Zeven · Stadt</div>
+    <div class="score s-B">B 60</div>
+  </div>
+  <div class="title">Reihenendhaus 80m² Zeven</div>
+  <div class="subtitle">
+    <span>📍 Zeven</span>
+    <span>🏗 k.A.</span>
+    <span>🏠 1 WE</span>
+  </div>
+
+  <div class="price">
+    <div class="price-main">159.500 €</div>
+    <div class="price-sub">
+      <div class="price-pqm">1.994 €/m²</div>
+      <div class="price-bench">am Marktniveau</div>
+    </div>
+  </div>
+
+  <div class="met">
+    <div class="met-c"><div class="met-l">Wfl.</div><div class="met-v">80 m²</div></div>
+    <div class="met-c"><div class="met-l">Grund</div><div class="met-v">508 m²</div></div>
+    <div class="met-c"><div class="met-l">Faktor</div><div class="met-v r">20.1×</div></div>
+    <div class="met-c"><div class="met-l">Provision</div><div class="met-v">3.57%</div></div>
+  </div>
+
+  <div class="kpi">
+    <div class="k"><span class="l">Jahresmiete <small>geschätzt</small></span><span class="v o">7.926 €</span></div>
+    <div class="k"><span class="l">Miete/m²</span><span class="v">8.26 €</span></div>
+    <div class="k"><span class="l">Brutto-Rendite</span><span class="v r">4.97 %</span></div>
+    <div class="k"><span class="l">Netto-Rendite</span><span class="v r">3.27 %</span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">Annuität</span><span class="v">−824 €/mo</span></div>
+    <div class="k"><span class="l">Bewirtschaftung</span><span class="v">−233 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Cashflow netto</strong></span><span class="v o"><strong>-296 €/mo</strong></span></div>
+    <div class="k"><span class="l">+ Tilgung + AfA</span><span class="v g">+518 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Vermögensaufbau</strong></span><span class="v gold"><strong>+279 €/mo</strong></span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">NK-Bedarf <small>GrESt+Notar+Makler</small></span><span class="v">16.409 €</span></div>
+  </div>
+
+  <div class="bdg"><span class="b bl">508m² Grundstück</span><span class="b bl">Reihenendhaus</span><span class="b g">günstigster Hauseinstieg</span></div>
+
+  <div class="an">
+    <strong>Analyse:</strong> Günstigstes Haus-Objekt im Tool. Reihenendhaus mit überraschend großem Grundstück (508m²). Eher für Eigennutz als Anlage.
+    <div class="verd v-verh">⚠️ Eigennutz besser</div>
+  </div>
+
+  <div class="cta">
+    <a href="https://www.immowelt.de/expose/2c8mb5t" target="_blank" class="cta-btn cta-pri">
+      <svg class="cta-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Zum Exposé
+    </a>
+    <span class="src">Immowelt</span>
+  </div>
+</div>
+
+<div class="card" data-f="selsingen immowelt etw score-55" data-score="55" data-rendite="3.16" data-preis="145000" data-cf="-396">
+  <div class="src-bar src-listing">🔵 Suchindex · Immowelt · #17</div>
+  <div class="head">
+    <div class="tag"><span class="dot b"></span>Selsingen · 9km</div>
+    <div class="score s-C">C 55</div>
+  </div>
+  <div class="title">ETW Selsingen Bj.1920 vermietet</div>
+  <div class="subtitle">
+    <span>📍 Selsingen</span>
+    <span>🏗 1920</span>
+    <span>🏠 1 WE</span>
+  </div>
+
+  <div class="price">
+    <div class="price-main">145.000 €</div>
+    <div class="price-sub">
+      <div class="price-pqm">2.071 €/m²</div>
+      <div class="price-bench">am Marktniveau</div>
+    </div>
+  </div>
+
+  <div class="met">
+    <div class="met-c"><div class="met-l">Wfl.</div><div class="met-v">70 m²</div></div>
+    <div class="met-c"><div class="met-l">Grund</div><div class="met-v">- m²</div></div>
+    <div class="met-c"><div class="met-l">Faktor</div><div class="met-v r">20.9×</div></div>
+    <div class="met-c"><div class="met-l">Provision</div><div class="met-v">3.0%</div></div>
+  </div>
+
+  <div class="kpi">
+    <div class="k"><span class="l">Jahresmiete <strong>IST</strong></span><span class="v g">6.938 €</span></div>
+    <div class="k"><span class="l">Miete/m²</span><span class="v">8.26 €</span></div>
+    <div class="k"><span class="l">Brutto-Rendite</span><span class="v r">4.78 %</span></div>
+    <div class="k"><span class="l">Netto-Rendite</span><span class="v r">3.16 %</span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">Annuität</span><span class="v">−750 €/mo</span></div>
+    <div class="k"><span class="l">Bewirtschaftung</span><span class="v">−224 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Cashflow netto</strong></span><span class="v o"><strong>-396 €/mo</strong></span></div>
+    <div class="k"><span class="l">+ Tilgung + AfA</span><span class="v g">+471 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Vermögensaufbau</strong></span><span class="v gold"><strong>+98 €/mo</strong></span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">NK-Bedarf <small>GrESt+Notar+Makler</small></span><span class="v">14.500 €</span></div>
+  </div>
+
+  <div class="bdg"><span class="b bl">EG-Wohnung</span><span class="b g">vermietet</span><span class="b r">MFH 1920</span></div>
+
+  <div class="an">
+    <strong>Analyse:</strong> Günstige ETW im Selsinger Mietshaus. Selsingen Markttrend +7,5% YoY = Wertstabil. Aber Faktor 21× im ETW-Bereich grenzwertig.
+    <div class="verd v-pass">❌ Faktor zu hoch ETW</div>
+  </div>
+
+  <div class="cta">
+    <a href="https://www.immowelt.de/suche/kaufen/immobilien/selsingen-27446/haassel-27446/nbh2de3693" target="_blank" class="cta-btn cta-pri">
+      <svg class="cta-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Zum Exposé
+    </a>
+    <span class="src">Immowelt</span>
+  </div>
+</div>
+
+<div class="card" data-f="heeslingen stegeberg reserviert score-50" data-score="50" data-rendite="2.93" data-preis="365000" data-cf="-948">
+  <div class="src-bar src-direct">🟢 Live verifiziert · Stegeberg Zeven · #4</div>
+  <div class="head">
+    <div class="tag"><span class="dot g"></span>Wense/Heeslingen · 10km</div>
+    <div class="score s-C">C 50</div>
+  </div>
+  <div class="title">Großes Haus 7 Zi · 2-WE-fähig</div>
+  <div class="subtitle">
+    <span>📍 Wense/Heeslingen</span>
+    <span>🏗 1998</span>
+    <span>🏠 2 WE</span>
+  </div>
+
+  <div class="price">
+    <div class="price-main">365.000 €</div>
+    <div class="price-sub">
+      <div class="price-pqm">2.186 €/m²</div>
+      <div class="price-bench">am Marktniveau</div>
+    </div>
+  </div>
+
+  <div class="met">
+    <div class="met-c"><div class="met-l">Wfl.</div><div class="met-v">167 m²</div></div>
+    <div class="met-c"><div class="met-l">Grund</div><div class="met-v">600 m²</div></div>
+    <div class="met-c"><div class="met-l">Faktor</div><div class="met-v r">22.1×</div></div>
+    <div class="met-c"><div class="met-l">Provision</div><div class="met-v">3.57%</div></div>
+  </div>
+
+  <div class="kpi">
+    <div class="k"><span class="l">Jahresmiete <small>geschätzt</small></span><span class="v o">16.529 €</span></div>
+    <div class="k"><span class="l">Miete/m²</span><span class="v">8.26 €</span></div>
+    <div class="k"><span class="l">Brutto-Rendite</span><span class="v r">4.53 %</span></div>
+    <div class="k"><span class="l">Netto-Rendite</span><span class="v r">2.93 %</span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">Annuität</span><span class="v">−1.887 €/mo</span></div>
+    <div class="k"><span class="l">Bewirtschaftung</span><span class="v">−431 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Cashflow netto</strong></span><span class="v r"><strong>-948 €/mo</strong></span></div>
+    <div class="k"><span class="l">+ Tilgung + AfA</span><span class="v g">+1.187 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Vermögensaufbau</strong></span><span class="v gold"><strong>+64 €/mo</strong></span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">NK-Bedarf <small>GrESt+Notar+Makler</small></span><span class="v">38.580 €</span></div>
+  </div>
+
+  <div class="bdg"><span class="b bl">Bj.1998 modern</span><span class="b bl">2-WE-Option</span><span class="b r">RESERVIERT</span></div>
+
+  <div class="an">
+    <strong>Analyse:</strong> Schöne moderne Substanz, aber zu teuer für reine Anlage. Sinnvoll nur wenn Eigenbezug + 1 WE vermieten (Wohnkosten ca. 600€/mo statt Miete).
+    <div class="verd v-pass">❌ Reserviert · zu teuer pure Anlage</div>
+  </div>
+
+  <div class="cta">
+    <a href="https://www.stegeberg.de/kaufangebote-2/kaufangebote-3/grosses-solides-haus-mit-7-zimmern.html" target="_blank" class="cta-btn cta-pri">
+      <svg class="cta-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Zum Exposé
+    </a>
+    <span class="src">Stegeberg Zeven</span>
+  </div>
+</div>
+
+<div class="card" data-f="zeven immowelt etw score-50" data-score="50" data-rendite="2.74" data-preis="179000" data-cf="-545">
+  <div class="src-bar src-listing">🔵 Suchindex · Immowelt · #12</div>
+  <div class="head">
+    <div class="tag"><span class="dot b"></span>Zeven · Stadt</div>
+    <div class="score s-C">C 50</div>
+  </div>
+  <div class="title">ETW 77m² Bj.1991 · vermietet</div>
+  <div class="subtitle">
+    <span>📍 Zeven</span>
+    <span>🏗 1991</span>
+    <span>🏠 1 WE</span>
+  </div>
+
+  <div class="price">
+    <div class="price-main">179.000 €</div>
+    <div class="price-sub">
+      <div class="price-pqm">2.325 €/m²</div>
+      <div class="price-bench" style="color:var(--red)">+5% ÜBER MARKT</div>
+    </div>
+  </div>
+
+  <div class="met">
+    <div class="met-c"><div class="met-l">Wfl.</div><div class="met-v">77 m²</div></div>
+    <div class="met-c"><div class="met-l">Grund</div><div class="met-v">- m²</div></div>
+    <div class="met-c"><div class="met-l">Faktor</div><div class="met-v r">23.7×</div></div>
+    <div class="met-c"><div class="met-l">Provision</div><div class="met-v">3.0%</div></div>
+  </div>
+
+  <div class="kpi">
+    <div class="k"><span class="l">Jahresmiete <strong>IST</strong></span><span class="v g">7.560 €</span></div>
+    <div class="k"><span class="l">Miete/m²</span><span class="v">8.18 €</span></div>
+    <div class="k"><span class="l">Brutto-Rendite</span><span class="v r">4.22 %</span></div>
+    <div class="k"><span class="l">Netto-Rendite</span><span class="v r">2.74 %</span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">Annuität</span><span class="v">−925 €/mo</span></div>
+    <div class="k"><span class="l">Bewirtschaftung</span><span class="v">−250 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Cashflow netto</strong></span><span class="v r"><strong>-545 €/mo</strong></span></div>
+    <div class="k"><span class="l">+ Tilgung + AfA</span><span class="v g">+582 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Vermögensaufbau</strong></span><span class="v gold"><strong>+90 €/mo</strong></span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">NK-Bedarf <small>GrESt+Notar+Makler</small></span><span class="v">17.900 €</span></div>
+  </div>
+
+  <div class="bdg"><span class="b g">ETW vermietet 630€</span><span class="b bl">DG mit Loggia</span><span class="b g">+ Stellplatz</span></div>
+
+  <div class="an">
+    <strong>Analyse:</strong> Solide Wohnung in Zeven-Zentrum. Aktuelle Kaltmiete 630€ = 8,18€/m² ist marktgerecht. ETW als Einstieg ok, aber Faktor 23,7× wenig Spielraum. WEG-Beschlüsse prüfen.
+    <div class="verd v-pass">❌ Faktor zu hoch für ETW</div>
+  </div>
+
+  <div class="cta">
+    <a href="https://www.immowelt.de/expose/829ff0e4-428c-4805-a4a7-bbe9181510d1" target="_blank" class="cta-btn cta-pri">
+      <svg class="cta-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Zum Exposé
+    </a>
+    <span class="src">Immowelt</span>
+  </div>
+</div>
+
+<div class="card" data-f="bremervoerde immowelt etw score-50" data-score="50" data-rendite="2.97" data-preis="214000" data-cf="-586">
+  <div class="src-bar src-listing">🔵 Suchindex · Immowelt · #13</div>
+  <div class="head">
+    <div class="tag"><span class="dot b"></span>Bremervörde · 26km</div>
+    <div class="score s-C">C 50</div>
+  </div>
+  <div class="title">ETW Bremervörde · Innenstadt</div>
+  <div class="subtitle">
+    <span>📍 Bremervörde</span>
+    <span>🏗 k.A.</span>
+    <span>🏠 1 WE</span>
+  </div>
+
+  <div class="price">
+    <div class="price-main">214.000 €</div>
+    <div class="price-sub">
+      <div class="price-pqm">2.378 €/m²</div>
+      <div class="price-bench" style="color:var(--red)">+8% ÜBER MARKT</div>
+    </div>
+  </div>
+
+  <div class="met">
+    <div class="met-c"><div class="met-l">Wfl.</div><div class="met-v">90 m²</div></div>
+    <div class="met-c"><div class="met-l">Grund</div><div class="met-v">- m²</div></div>
+    <div class="met-c"><div class="met-l">Faktor</div><div class="met-v r">22.3×</div></div>
+    <div class="met-c"><div class="met-l">Provision</div><div class="met-v">3.0%</div></div>
+  </div>
+
+  <div class="kpi">
+    <div class="k"><span class="l">Jahresmiete <strong>IST</strong></span><span class="v g">9.600 €</span></div>
+    <div class="k"><span class="l">Miete/m²</span><span class="v">8.89 €</span></div>
+    <div class="k"><span class="l">Brutto-Rendite</span><span class="v r">4.49 %</span></div>
+    <div class="k"><span class="l">Netto-Rendite</span><span class="v r">2.97 %</span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">Annuität</span><span class="v">−1.107 €/mo</span></div>
+    <div class="k"><span class="l">Bewirtschaftung</span><span class="v">−279 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Cashflow netto</strong></span><span class="v r"><strong>-586 €/mo</strong></span></div>
+    <div class="k"><span class="l">+ Tilgung + AfA</span><span class="v g">+696 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Vermögensaufbau</strong></span><span class="v gold"><strong>+106 €/mo</strong></span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">NK-Bedarf <small>GrESt+Notar+Makler</small></span><span class="v">21.400 €</span></div>
+  </div>
+
+  <div class="bdg"><span class="b g">IST 9.600€/J</span><span class="b g">vermietet seit 2024</span><span class="b bl">Bahnhof fußläufig</span><span class="b bl">Hausgeld 407€</span></div>
+
+  <div class="an">
+    <strong>Analyse:</strong> Solide vermietete ETW in Bremervörde-Zentrum. Bahnhofnähe = stabile Mieter. Aber: Hausgeld 407€/mo (davon 167€ Rücklage = ok). Faktor 22× macht CF schwierig.
+    <div class="verd v-pass">❌ ETW-Faktor zu hoch</div>
+  </div>
+
+  <div class="cta">
+    <a href="https://www.immowelt.de/expose/19c33c44-fc6d-4f4f-86a2-78fa8f9e67c7" target="_blank" class="cta-btn cta-pri">
+      <svg class="cta-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Zum Exposé
+    </a>
+    <span class="src">Immowelt</span>
+  </div>
+</div>
+
+<div class="card" data-f="gnarrenburg immowelt score-50" data-score="50" data-rendite="4.41" data-preis="329000" data-cf="-394">
+  <div class="src-bar src-listing">🔵 Suchindex · Immowelt · #24</div>
+  <div class="head">
+    <div class="tag"><span class="dot b"></span>Kuhstedtermoor-Gnarrenburg · 28km</div>
+    <div class="score s-C">C 50</div>
+  </div>
+  <div class="title">Bauernhaus + EFH 284m² Resthof</div>
+  <div class="subtitle">
+    <span>📍 Kuhstedtermoor-Gnarrenburg</span>
+    <span>🏗 1880+1958</span>
+    <span>🏠 2 WE</span>
+  </div>
+
+  <div class="price">
+    <div class="price-main">329.000 €</div>
+    <div class="price-sub">
+      <div class="price-pqm">1.158 €/m²</div>
+      <div class="price-bench" style="color:var(--green)">47% UNTER MARKT</div>
+    </div>
+  </div>
+
+  <div class="met">
+    <div class="met-c"><div class="met-l">Wfl.</div><div class="met-v">284 m²</div></div>
+    <div class="met-c"><div class="met-l">Grund</div><div class="met-v">5.000 m²</div></div>
+    <div class="met-c"><div class="met-l">Faktor</div><div class="met-v gold">16.7×</div></div>
+    <div class="met-c"><div class="met-l">Provision</div><div class="met-v">3.57%</div></div>
+  </div>
+
+  <div class="kpi">
+    <div class="k"><span class="l">Jahresmiete <small>geschätzt</small></span><span class="v o">19.724 €</span></div>
+    <div class="k"><span class="l">Miete/m²</span><span class="v">8.26 €</span></div>
+    <div class="k"><span class="l">Brutto-Rendite</span><span class="v gold">5.99 %</span></div>
+    <div class="k"><span class="l">Netto-Rendite</span><span class="v gold">4.41 %</span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">Annuität</span><span class="v">−1.701 €/mo</span></div>
+    <div class="k"><span class="l">Bewirtschaftung</span><span class="v">−421 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Cashflow netto</strong></span><span class="v o"><strong>-394 €/mo</strong></span></div>
+    <div class="k"><span class="l">+ Tilgung + AfA</span><span class="v g">+1.070 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Vermögensaufbau</strong></span><span class="v g"><strong>+617 €/mo</strong></span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">NK-Bedarf <small>GrESt+Notar+Makler</small></span><span class="v">34.766 €</span></div>
+  </div>
+
+  <div class="bdg"><span class="b bl">Resthof 5.000m² Grund</span><span class="b bl">Bauernhaus 1880</span><span class="b r">EFH 1958</span><span class="b bl">sanierungsbed.</span></div>
+
+  <div class="an">
+    <strong>Analyse:</strong> Resthof mit Bauernhaus + EFH = Mehrgenerationenhaus oder 2-WE-Vermietung. 5.000m² für Pferdehaltung. Sanierungsbedarf zwingend einplanen.
+    <div class="verd v-verh">⚠️ Sani-Budget einplanen</div>
+  </div>
+
+  <div class="cta">
+    <a href="https://www.immowelt.de/expose/516946d7-2bbf-4c75-a491-bfba7ada7a20" target="_blank" class="cta-btn cta-pri">
+      <svg class="cta-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Zum Exposé
+    </a>
+    <span class="src">Immowelt</span>
+  </div>
+</div>
+
+<div class="card" data-f="scheessel immowelt score-45" data-score="45" data-rendite="2.83" data-preis="249000" data-cf="-715">
+  <div class="src-bar src-listing">🔵 Suchindex · Immowelt · #26</div>
+  <div class="head">
+    <div class="tag"><span class="dot b"></span>Scheeßel · 20km</div>
+    <div class="score s-C">C 45</div>
+  </div>
+  <div class="title">EFH 130m² mit Einliegerwhg.</div>
+  <div class="subtitle">
+    <span>📍 Scheeßel</span>
+    <span>🏗 k.A.</span>
+    <span>🏠 2 WE</span>
+  </div>
+
+  <div class="price">
+    <div class="price-main">249.000 €</div>
+    <div class="price-sub">
+      <div class="price-pqm">1.915 €/m²</div>
+      <div class="price-bench">am Marktniveau</div>
+    </div>
+  </div>
+
+  <div class="met">
+    <div class="met-c"><div class="met-l">Wfl.</div><div class="met-v">130 m²</div></div>
+    <div class="met-c"><div class="met-l">Grund</div><div class="met-v">600 m²</div></div>
+    <div class="met-c"><div class="met-l">Faktor</div><div class="met-v r">22.9×</div></div>
+    <div class="met-c"><div class="met-l">Provision</div><div class="met-v">0%</div></div>
+  </div>
+
+  <div class="kpi">
+    <div class="k"><span class="l">Jahresmiete <small>geschätzt</small></span><span class="v o">10.858 €</span></div>
+    <div class="k"><span class="l">Miete/m²</span><span class="v">8.26 €</span></div>
+    <div class="k"><span class="l">Brutto-Rendite</span><span class="v r">4.36 %</span></div>
+    <div class="k"><span class="l">Netto-Rendite</span><span class="v r">2.83 %</span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">Annuität</span><span class="v">−1.287 €/mo</span></div>
+    <div class="k"><span class="l">Bewirtschaftung</span><span class="v">−314 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Cashflow netto</strong></span><span class="v r"><strong>-715 €/mo</strong></span></div>
+    <div class="k"><span class="l">+ Tilgung + AfA</span><span class="v g">+809 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Vermögensaufbau</strong></span><span class="v gold"><strong>+69 €/mo</strong></span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">NK-Bedarf <small>GrESt+Notar+Makler</small></span><span class="v">17.430 €</span></div>
+  </div>
+
+  <div class="bdg"><span class="b bl">provisionsfrei!</span><span class="b bl">Einliegerwhg.</span><span class="b bl">Versteigerung möglich</span></div>
+
+  <div class="an">
+    <strong>Analyse:</strong> Provisionsfrei direkt vom Eigentümer (kein Makler!). Wird ggf. beim Amtsgericht Rotenburg versteigert — Vorab-Kauf möglich. Bei Reduktion <200k interessant.
+    <div class="verd v-verh">⚠️ Versteigerung zum Spar-Preis?</div>
+  </div>
+
+  <div class="cta">
+    <a href="https://www.immowelt.de/expose/2d3pv55" target="_blank" class="cta-btn cta-pri">
+      <svg class="cta-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Zum Exposé
+    </a>
+    <span class="src">Immowelt</span>
+  </div>
+</div>
+
+<div class="card" data-f="bremervoerde immowelt score-40" data-score="40" data-rendite="2.85" data-preis="449000" data-cf="-1125">
+  <div class="src-bar src-listing">🔵 Suchindex · Immowelt · #25</div>
+  <div class="head">
+    <div class="tag"><span class="dot b"></span>Bremervörde-Pees · 26km</div>
+    <div class="score s-C">C 40</div>
+  </div>
+  <div class="title">MFH + 3 Gewerbe (Pizzeria+FS)</div>
+  <div class="subtitle">
+    <span>📍 Bremervörde-Pees</span>
+    <span>🏗 Heizung 2023</span>
+    <span>🏠 3 WE</span>
+  </div>
+
+  <div class="price">
+    <div class="price-main">449.000 €</div>
+    <div class="price-sub">
+      <div class="price-pqm">2.673 €/m²</div>
+      <div class="price-bench" style="color:var(--red)">+21% ÜBER MARKT</div>
+    </div>
+  </div>
+
+  <div class="met">
+    <div class="met-c"><div class="met-l">Wfl.</div><div class="met-v">168 m²</div></div>
+    <div class="met-c"><div class="met-l">Grund</div><div class="met-v">400 m²</div></div>
+    <div class="met-c"><div class="met-l">Faktor</div><div class="met-v r">21.4×</div></div>
+    <div class="met-c"><div class="met-l">Provision</div><div class="met-v">3.57%</div></div>
+  </div>
+
+  <div class="kpi">
+    <div class="k"><span class="l">Jahresmiete <small>geschätzt</small></span><span class="v o">20.996 €</span></div>
+    <div class="k"><span class="l">Miete/m²</span><span class="v">8.26 €</span></div>
+    <div class="k"><span class="l">Brutto-Rendite</span><span class="v r">4.68 %</span></div>
+    <div class="k"><span class="l">Netto-Rendite</span><span class="v r">2.85 %</span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">Annuität</span><span class="v">−2.321 €/mo</span></div>
+    <div class="k"><span class="l">Bewirtschaftung</span><span class="v">−530 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Cashflow netto</strong></span><span class="v r"><strong>-1.125 €/mo</strong></span></div>
+    <div class="k"><span class="l">+ Tilgung + AfA</span><span class="v g">+1.460 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Vermögensaufbau</strong></span><span class="v r"><strong>-55 €/mo</strong></span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">NK-Bedarf <small>GrESt+Notar+Makler</small></span><span class="v">47.506 €</span></div>
+  </div>
+
+  <div class="bdg"><span class="b bl">3 WE 74/54/40m²</span><span class="b bl">Pizzeria seit Jahren</span><span class="b r">Fahrschule</span><span class="b g">Heizung 2023 neu</span></div>
+
+  <div class="an">
+    <strong>Analyse:</strong> Diversifizierter Mietermix: 3 Wohnungen + 3 Gewerbe-Einheiten (Pizzeria langjährig, Fahrschule renoviert). Aber Preis pro m² zu hoch (2.673€) und Kaltmiete laut Inserat unklar.
+    <div class="verd v-pass">❌ Preis/m² zu hoch</div>
+  </div>
+
+  <div class="cta">
+    <a href="https://www.immowelt.de/expose/61dfc5e1-269c-4346-9577-0a10939932ff" target="_blank" class="cta-btn cta-pri">
+      <svg class="cta-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Zum Exposé
+    </a>
+    <span class="src">Immowelt</span>
+  </div>
+</div>
+
+<div class="card" data-f="zeven immowelt score-35" data-score="35" data-rendite="3.3" data-preis="379000" data-cf="-916">
+  <div class="src-bar src-listing">🔵 Suchindex · Immowelt · #11</div>
+  <div class="head">
+    <div class="tag"><span class="dot b"></span>Zeven Stadtrand · Stadt</div>
+    <div class="score s-C">C 35</div>
+  </div>
+  <div class="title">Friesenhaus · 1-2 Fam. (Verkäufer=Mieter)</div>
+  <div class="subtitle">
+    <span>📍 Zeven Stadtrand</span>
+    <span>🏗 saniert</span>
+    <span>🏠 2 WE</span>
+  </div>
+
+  <div class="price">
+    <div class="price-main">379.000 €</div>
+    <div class="price-sub">
+      <div class="price-pqm">2.399 €/m²</div>
+      <div class="price-bench" style="color:var(--red)">+9% ÜBER MARKT</div>
+    </div>
+  </div>
+
+  <div class="met">
+    <div class="met-c"><div class="met-l">Wfl.</div><div class="met-v">158 m²</div></div>
+    <div class="met-c"><div class="met-l">Grund</div><div class="met-v">670 m²</div></div>
+    <div class="met-c"><div class="met-l">Faktor</div><div class="met-v r">21.1×</div></div>
+    <div class="met-c"><div class="met-l">Provision</div><div class="met-v">3.57%</div></div>
+  </div>
+
+  <div class="kpi">
+    <div class="k"><span class="l">Jahresmiete <strong>IST</strong></span><span class="v g">18.000 €</span></div>
+    <div class="k"><span class="l">Miete/m²</span><span class="v">9.49 €</span></div>
+    <div class="k"><span class="l">Brutto-Rendite</span><span class="v r">4.75 %</span></div>
+    <div class="k"><span class="l">Netto-Rendite</span><span class="v r">3.30 %</span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">Annuität</span><span class="v">−1.959 €/mo</span></div>
+    <div class="k"><span class="l">Bewirtschaftung</span><span class="v">−457 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Cashflow netto</strong></span><span class="v r"><strong>-916 €/mo</strong></span></div>
+    <div class="k"><span class="l">+ Tilgung + AfA</span><span class="v g">+1.233 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Vermögensaufbau</strong></span><span class="v gold"><strong>+317 €/mo</strong></span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">NK-Bedarf <small>GrESt+Notar+Makler</small></span><span class="v">38.785 €</span></div>
+  </div>
+
+  <div class="bdg"><span class="b g">top saniert</span><span class="b bl">Verkäufer = Mieter</span><span class="b r">Faktor 21,1× zu teuer</span><span class="b y">Provision 3,57%</span></div>
+
+  <div class="an">
+    <strong>Analyse:</strong> Schöne Substanz, aber Faktor 21,1× nicht tragbar. Verkäufer mietet sein Haus zurück (zeitlich begrenzt — Nachvermietungsrisiko). Nur bei Reduktion auf 290k interessant.
+    <div class="verd v-pass">❌ Zu teuer · überspringen</div>
+  </div>
+
+  <div class="cta">
+    <a href="https://www.immowelt.de/expose/2ejjh53" target="_blank" class="cta-btn cta-pri">
+      <svg class="cta-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Zum Exposé
+    </a>
+    <span class="src">Immowelt</span>
+  </div>
+</div>
+
+<div class="card" data-f="sittensen immowelt score-35" data-score="35" data-rendite="3.35" data-preis="370000" data-cf="-841">
+  <div class="src-bar src-listing">🔵 Suchindex · Immowelt · #27</div>
+  <div class="head">
+    <div class="tag"><span class="dot b"></span>Sittensen · 17km</div>
+    <div class="score s-C">C 35</div>
+  </div>
+  <div class="title">Wohnhaus 206m² + Einliegerwhg.</div>
+  <div class="subtitle">
+    <span>📍 Sittensen</span>
+    <span>🏗 1956+1979</span>
+    <span>🏠 2 WE</span>
+  </div>
+
+  <div class="price">
+    <div class="price-main">370.000 €</div>
+    <div class="price-sub">
+      <div class="price-pqm">1.796 €/m²</div>
+      <div class="price-bench">am Marktniveau</div>
+    </div>
+  </div>
+
+  <div class="met">
+    <div class="met-c"><div class="met-l">Wfl.</div><div class="met-v">206 m²</div></div>
+    <div class="met-c"><div class="met-l">Grund</div><div class="met-v">800 m²</div></div>
+    <div class="met-c"><div class="met-l">Faktor</div><div class="met-v r">20.3×</div></div>
+    <div class="met-c"><div class="met-l">Provision</div><div class="met-v">3.57%</div></div>
+  </div>
+
+  <div class="kpi">
+    <div class="k"><span class="l">Jahresmiete <small>geschätzt</small></span><span class="v o">18.259 €</span></div>
+    <div class="k"><span class="l">Miete/m²</span><span class="v">8.26 €</span></div>
+    <div class="k"><span class="l">Brutto-Rendite</span><span class="v r">4.93 %</span></div>
+    <div class="k"><span class="l">Netto-Rendite</span><span class="v r">3.35 %</span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">Annuität</span><span class="v">−1.912 €/mo</span></div>
+    <div class="k"><span class="l">Bewirtschaftung</span><span class="v">−488 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Cashflow netto</strong></span><span class="v r"><strong>-841 €/mo</strong></span></div>
+    <div class="k"><span class="l">+ Tilgung + AfA</span><span class="v g">+1.204 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Vermögensaufbau</strong></span><span class="v gold"><strong>+220 €/mo</strong></span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">NK-Bedarf <small>GrESt+Notar+Makler</small></span><span class="v">39.059 €</span></div>
+  </div>
+
+  <div class="bdg"><span class="b g">EG 126m² + DG 80m²</span><span class="b bl">Anbieter Volksbank</span><span class="b bl">Bj.1956</span></div>
+
+  <div class="an">
+    <strong>Analyse:</strong> Volksbank-Angebot. Haus mit klarer 1+1 Aufteilung. Sittensen ist verkehrsmäßig top (A1 1km). Aber 1.796€/m² + Bj.1956 = energetische Sanierung droht.
+    <div class="verd v-pass">❌ Faktor zu hoch + Sani-Risiko</div>
+  </div>
+
+  <div class="cta">
+    <a href="https://www.immowelt.de/expose/2eysf5m" target="_blank" class="cta-btn cta-pri">
+      <svg class="cta-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Zum Exposé
+    </a>
+    <span class="src">Immowelt</span>
+  </div>
+</div>
+
+<div class="card" data-f="elsdorf stegeberg score-32" data-score="32" data-rendite="1.05" data-preis="445000" data-cf="-1945">
+  <div class="src-bar src-direct">🟢 Live verifiziert · Stegeberg Zeven · #6</div>
+  <div class="head">
+    <div class="tag"><span class="dot g"></span>Elsdorf nähe A1 · 13km</div>
+    <div class="score s-D">D 32</div>
+  </div>
+  <div class="title">Hofstelle mit Land + Diele</div>
+  <div class="subtitle">
+    <span>📍 Elsdorf nähe A1</span>
+    <span>🏗 Anf. 20.Jh.</span>
+    <span>🏠 1 WE</span>
+  </div>
+
+  <div class="price">
+    <div class="price-main">445.000 €</div>
+    <div class="price-sub">
+      <div class="price-pqm">3.296 €/m²</div>
+      <div class="price-bench" style="color:var(--red)">+49% ÜBER MARKT</div>
+    </div>
+  </div>
+
+  <div class="met">
+    <div class="met-c"><div class="met-l">Wfl.</div><div class="met-v">135 m²</div></div>
+    <div class="met-c"><div class="met-l">Grund</div><div class="met-v">5.000 m²</div></div>
+    <div class="met-c"><div class="met-l">Faktor</div><div class="met-v r">45.5×</div></div>
+    <div class="met-c"><div class="met-l">Provision</div><div class="met-v">3.57%</div></div>
+  </div>
+
+  <div class="kpi">
+    <div class="k"><span class="l">Jahresmiete <small>geschätzt</small></span><span class="v o">9.772 €</span></div>
+    <div class="k"><span class="l">Miete/m²</span><span class="v">6.03 €</span></div>
+    <div class="k"><span class="l">Brutto-Rendite</span><span class="v r">2.20 %</span></div>
+    <div class="k"><span class="l">Netto-Rendite</span><span class="v r">1.05 %</span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">Annuität</span><span class="v">−2.300 €/mo</span></div>
+    <div class="k"><span class="l">Bewirtschaftung</span><span class="v">−524 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Cashflow netto</strong></span><span class="v r"><strong>-1.945 €/mo</strong></span></div>
+    <div class="k"><span class="l">+ Tilgung + AfA</span><span class="v g">+1.447 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Vermögensaufbau</strong></span><span class="v r"><strong>-489 €/mo</strong></span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">NK-Bedarf <small>GrESt+Notar+Makler</small></span><span class="v">47.006 €</span></div>
+  </div>
+
+  <div class="bdg"><span class="b bl">Resthof</span><span class="b bl">300m² Diele</span><span class="b r">Sanierungsbedarf</span><span class="b bl">5000m² Grund</span></div>
+
+  <div class="an">
+    <strong>Analyse:</strong> Resthof mit 135m² Wohnhaus + 300m² Diele + 3 Nebengebäude. Substanz aus 50er/60er — kompletter Sanierungsstau. Nur sinnvoll für Gewerbe-Selbstnutzer mit handwerklichem Geschick.
+    <div class="verd v-pass">❌ Nicht für Anlage geeignet</div>
+  </div>
+
+  <div class="cta">
+    <a href="https://www.stegeberg.de/kaufangebote-2/kaufangebote-3/grosses-massives-wohnhaus-8-zimmer-3.html" target="_blank" class="cta-btn cta-pri">
+      <svg class="cta-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Zum Exposé
+    </a>
+    <span class="src">Stegeberg Zeven</span>
+  </div>
+</div>
+
+<div class="card" data-f="sittensen immowelt etw score-30" data-score="30" data-rendite="2.04" data-preis="149000" data-cf="-590">
+  <div class="src-bar src-listing">🔵 Suchindex · Immowelt · #19</div>
+  <div class="head">
+    <div class="tag"><span class="dot b"></span>Sittensen · 17km</div>
+    <div class="score s-D">D 30</div>
+  </div>
+  <div class="title">ETW 57m² Sittensen Bj.1994</div>
+  <div class="subtitle">
+    <span>📍 Sittensen</span>
+    <span>🏗 1994</span>
+    <span>🏠 1 WE</span>
+  </div>
+
+  <div class="price">
+    <div class="price-main">149.000 €</div>
+    <div class="price-sub">
+      <div class="price-pqm">2.614 €/m²</div>
+      <div class="price-bench" style="color:var(--red)">+18% ÜBER MARKT</div>
+    </div>
+  </div>
+
+  <div class="met">
+    <div class="met-c"><div class="met-l">Wfl.</div><div class="met-v">57 m²</div></div>
+    <div class="met-c"><div class="met-l">Grund</div><div class="met-v">- m²</div></div>
+    <div class="met-c"><div class="met-l">Faktor</div><div class="met-v r">31.0×</div></div>
+    <div class="met-c"><div class="met-l">Provision</div><div class="met-v">3.0%</div></div>
+  </div>
+
+  <div class="kpi">
+    <div class="k"><span class="l">Jahresmiete <strong>IST</strong></span><span class="v g">4.800 €</span></div>
+    <div class="k"><span class="l">Miete/m²</span><span class="v">7.02 €</span></div>
+    <div class="k"><span class="l">Brutto-Rendite</span><span class="v r">3.22 %</span></div>
+    <div class="k"><span class="l">Netto-Rendite</span><span class="v r">2.04 %</span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">Annuität</span><span class="v">−770 €/mo</span></div>
+    <div class="k"><span class="l">Bewirtschaftung</span><span class="v">−220 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Cashflow netto</strong></span><span class="v r"><strong>-590 €/mo</strong></span></div>
+    <div class="k"><span class="l">+ Tilgung + AfA</span><span class="v g">+484 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Vermögensaufbau</strong></span><span class="v r"><strong>-7 €/mo</strong></span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">NK-Bedarf <small>GrESt+Notar+Makler</small></span><span class="v">14.900 €</span></div>
+  </div>
+
+  <div class="bdg"><span class="b g">IST 400€/mo</span><span class="b bl">Anbieter Sparkasse</span><span class="b r">Faktor 31× zu hoch</span></div>
+
+  <div class="an">
+    <strong>Analyse:</strong> Kaltmiete 400€ = nur 7€/m² (unter Markt). Mietsteigerung möglich, aber Faktor 31× ist für ETW jenseits jeder Anlage-Logik.
+    <div class="verd v-pass">❌ Faktor unhaltbar</div>
+  </div>
+
+  <div class="cta">
+    <a href="https://www.immowelt.de/expose/ba86087e-4c97-411b-ad5a-9730905c4f40" target="_blank" class="cta-btn cta-pri">
+      <svg class="cta-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Zum Exposé
+    </a>
+    <span class="src">Immowelt</span>
+  </div>
+</div>
+
+<div class="card" data-f="rotenburg immowelt score-30" data-score="30" data-rendite="2.13" data-preis="260000" data-cf="-904">
+  <div class="src-bar src-listing">🔵 Suchindex · Immowelt · #29</div>
+  <div class="head">
+    <div class="tag"><span class="dot b"></span>Rotenburg/Wümme · 30km</div>
+    <div class="score s-D">D 30</div>
+  </div>
+  <div class="title">EFH 123m² Rotenburg-Kernstadt</div>
+  <div class="subtitle">
+    <span>📍 Rotenburg/Wümme</span>
+    <span>🏗 k.A.</span>
+    <span>🏠 1 WE</span>
+  </div>
+
+  <div class="price">
+    <div class="price-main">260.000 €</div>
+    <div class="price-sub">
+      <div class="price-pqm">2.114 €/m²</div>
+      <div class="price-bench">am Marktniveau</div>
+    </div>
+  </div>
+
+  <div class="met">
+    <div class="met-c"><div class="met-l">Wfl.</div><div class="met-v">123 m²</div></div>
+    <div class="met-c"><div class="met-l">Grund</div><div class="met-v">500 m²</div></div>
+    <div class="met-c"><div class="met-l">Faktor</div><div class="met-v r">28.9×</div></div>
+    <div class="met-c"><div class="met-l">Provision</div><div class="met-v">3.0%</div></div>
+  </div>
+
+  <div class="kpi">
+    <div class="k"><span class="l">Jahresmiete <small>geschätzt</small></span><span class="v o">8.983 €</span></div>
+    <div class="k"><span class="l">Miete/m²</span><span class="v">8.26 €</span></div>
+    <div class="k"><span class="l">Brutto-Rendite</span><span class="v r">3.46 %</span></div>
+    <div class="k"><span class="l">Netto-Rendite</span><span class="v r">2.13 %</span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">Annuität</span><span class="v">−1.345 €/mo</span></div>
+    <div class="k"><span class="l">Bewirtschaftung</span><span class="v">−374 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Cashflow netto</strong></span><span class="v r"><strong>-904 €/mo</strong></span></div>
+    <div class="k"><span class="l">+ Tilgung + AfA</span><span class="v g">+846 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Vermögensaufbau</strong></span><span class="v r"><strong>-83 €/mo</strong></span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">NK-Bedarf <small>GrESt+Notar+Makler</small></span><span class="v">26.000 €</span></div>
+  </div>
+
+  <div class="bdg"><span class="b bl">Sackgasse</span><span class="b bl">Anbieter Sparkasse</span><span class="b g">Bahnhof + A1 Top</span></div>
+
+  <div class="an">
+    <strong>Analyse:</strong> Klassisches EFH in Rotenburg-Kernstadt. Sackgassenlage = ruhig. Aber nicht für Anlage geeignet, Faktor 29×.
+    <div class="verd v-pass">❌ Reines EFH</div>
+  </div>
+
+  <div class="cta">
+    <a href="https://www.immowelt.de/expose/a1d665d1-8f4f-48be-8e2e-f4c0afb6f886" target="_blank" class="cta-btn cta-pri">
+      <svg class="cta-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Zum Exposé
+    </a>
+    <span class="src">Immowelt</span>
+  </div>
+</div>
+
+<div class="card" data-f="bremervoerde immowelt score-28" data-score="28" data-rendite="1.81" data-preis="345000" data-cf="-1307">
+  <div class="src-bar src-listing">🔵 Suchindex · Immowelt · #21</div>
+  <div class="head">
+    <div class="tag"><span class="dot b"></span>Bremervörde-Spreckens · 30km</div>
+    <div class="score s-D">D 28</div>
+  </div>
+  <div class="title">EFH Spreckens 140m²</div>
+  <div class="subtitle">
+    <span>📍 Bremervörde-Spreckens</span>
+    <span>🏗 k.A.</span>
+    <span>🏠 1 WE</span>
+  </div>
+
+  <div class="price">
+    <div class="price-main">345.000 €</div>
+    <div class="price-sub">
+      <div class="price-pqm">2.464 €/m²</div>
+      <div class="price-bench" style="color:var(--red)">+12% ÜBER MARKT</div>
+    </div>
+  </div>
+
+  <div class="met">
+    <div class="met-c"><div class="met-l">Wfl.</div><div class="met-v">140 m²</div></div>
+    <div class="met-c"><div class="met-l">Grund</div><div class="met-v">646 m²</div></div>
+    <div class="met-c"><div class="met-l">Faktor</div><div class="met-v r">33.8×</div></div>
+    <div class="met-c"><div class="met-l">Provision</div><div class="met-v">3.57%</div></div>
+  </div>
+
+  <div class="kpi">
+    <div class="k"><span class="l">Jahresmiete <small>geschätzt</small></span><span class="v o">10.219 €</span></div>
+    <div class="k"><span class="l">Miete/m²</span><span class="v">8.26 €</span></div>
+    <div class="k"><span class="l">Brutto-Rendite</span><span class="v r">2.96 %</span></div>
+    <div class="k"><span class="l">Netto-Rendite</span><span class="v r">1.81 %</span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">Annuität</span><span class="v">−1.784 €/mo</span></div>
+    <div class="k"><span class="l">Bewirtschaftung</span><span class="v">−422 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Cashflow netto</strong></span><span class="v r"><strong>-1.307 €/mo</strong></span></div>
+    <div class="k"><span class="l">+ Tilgung + AfA</span><span class="v g">+1.122 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Vermögensaufbau</strong></span><span class="v r"><strong>-201 €/mo</strong></span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">NK-Bedarf <small>GrESt+Notar+Makler</small></span><span class="v">36.473 €</span></div>
+  </div>
+
+  <div class="bdg"><span class="b bl">5 Zi</span><span class="b bl">646m² Grund</span><span class="b bl">Anbieter Sparkasse</span></div>
+
+  <div class="an">
+    <strong>Analyse:</strong> Klassisches EFH zur Eigennutzung, nicht für Anlage geeignet. Faktor 33,8×.
+    <div class="verd v-pass">❌ EFH-Eigennutz</div>
+  </div>
+
+  <div class="cta">
+    <a href="https://www.immowelt.de/expose/2ergf5j" target="_blank" class="cta-btn cta-pri">
+      <svg class="cta-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Zum Exposé
+    </a>
+    <span class="src">Immowelt</span>
+  </div>
+</div>
+
+<div class="card" data-f="gnarrenburg immowelt score-28" data-score="28" data-rendite="2.31" data-preis="499000" data-cf="-1685">
+  <div class="src-bar src-listing">🔵 Suchindex · Immowelt · #23</div>
+  <div class="head">
+    <div class="tag"><span class="dot b"></span>Langenhausen-Gnarrenburg · 30km</div>
+    <div class="score s-D">D 28</div>
+  </div>
+  <div class="title">MFH Langenhausen 180m² · 25.225m² Grund</div>
+  <div class="subtitle">
+    <span>📍 Langenhausen-Gnarrenburg</span>
+    <span>🏗 k.A.</span>
+    <span>🏠 3 WE</span>
+  </div>
+
+  <div class="price">
+    <div class="price-main">499.000 €</div>
+    <div class="price-sub">
+      <div class="price-pqm">2.772 €/m²</div>
+      <div class="price-bench" style="color:var(--red)">+26% ÜBER MARKT</div>
+    </div>
+  </div>
+
+  <div class="met">
+    <div class="met-c"><div class="met-l">Wfl.</div><div class="met-v">180 m²</div></div>
+    <div class="met-c"><div class="met-l">Grund</div><div class="met-v">25.225 m²</div></div>
+    <div class="met-c"><div class="met-l">Faktor</div><div class="met-v r">28.0×</div></div>
+    <div class="met-c"><div class="met-l">Provision</div><div class="met-v">3.57%</div></div>
+  </div>
+
+  <div class="kpi">
+    <div class="k"><span class="l">Jahresmiete <small>geschätzt</small></span><span class="v o">17.820 €</span></div>
+    <div class="k"><span class="l">Miete/m²</span><span class="v">8.26 €</span></div>
+    <div class="k"><span class="l">Brutto-Rendite</span><span class="v r">3.57 %</span></div>
+    <div class="k"><span class="l">Netto-Rendite</span><span class="v r">2.31 %</span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">Annuität</span><span class="v">−2.580 €/mo</span></div>
+    <div class="k"><span class="l">Bewirtschaftung</span><span class="v">−590 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Cashflow netto</strong></span><span class="v r"><strong>-1.685 €/mo</strong></span></div>
+    <div class="k"><span class="l">+ Tilgung + AfA</span><span class="v g">+1.623 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Vermögensaufbau</strong></span><span class="v r"><strong>-595 €/mo</strong></span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">NK-Bedarf <small>GrESt+Notar+Makler</small></span><span class="v">52.645 €</span></div>
+  </div>
+
+  <div class="bdg"><span class="b bl">25.225m² Grundstück (!!)</span><span class="b bl">Hofstelle</span><span class="b bl">Anbieter CENTURY21</span></div>
+
+  <div class="an">
+    <strong>Analyse:</strong> Riesiges Grundstück mit kleinem MFH. Pure Anlage-Sicht: Faktor 28× zu teuer. Nur sinnvoll wenn Grundstücksteilung/Verkauf möglich (= Wertschöpfung extern).
+    <div class="verd v-pass">❌ Pure Anlage zu teuer</div>
+  </div>
+
+  <div class="cta">
+    <a href="https://www.immowelt.de/expose/2ergf5j" target="_blank" class="cta-btn cta-pri">
+      <svg class="cta-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Zum Exposé
+    </a>
+    <span class="src">Immowelt</span>
+  </div>
+</div>
+
+<div class="card" data-f="zeven grimberg reserviert etw score-25" data-score="25" data-rendite="1.83" data-preis="210000" data-cf="-823">
+  <div class="src-bar src-direct">🟢 Live verifiziert · Grimberg Zeven · #14</div>
+  <div class="head">
+    <div class="tag"><span class="dot g"></span>Zeven · Stadt</div>
+    <div class="score s-D">D 25</div>
+  </div>
+  <div class="title">ETW Mühlenpark 64m² RESERVIERT</div>
+  <div class="subtitle">
+    <span>📍 Zeven</span>
+    <span>🏗 modern</span>
+    <span>🏠 1 WE</span>
+  </div>
+
+  <div class="price">
+    <div class="price-main">210.000 €</div>
+    <div class="price-sub">
+      <div class="price-pqm">3.281 €/m²</div>
+      <div class="price-bench" style="color:var(--red)">+49% ÜBER MARKT</div>
+    </div>
+  </div>
+
+  <div class="met">
+    <div class="met-c"><div class="met-l">Wfl.</div><div class="met-v">64 m²</div></div>
+    <div class="met-c"><div class="met-l">Grund</div><div class="met-v">- m²</div></div>
+    <div class="met-c"><div class="met-l">Faktor</div><div class="met-v r">33.1×</div></div>
+    <div class="met-c"><div class="met-l">Provision</div><div class="met-v">3.0%</div></div>
+  </div>
+
+  <div class="kpi">
+    <div class="k"><span class="l">Jahresmiete <small>geschätzt</small></span><span class="v o">6.342 €</span></div>
+    <div class="k"><span class="l">Miete/m²</span><span class="v">8.26 €</span></div>
+    <div class="k"><span class="l">Brutto-Rendite</span><span class="v r">3.02 %</span></div>
+    <div class="k"><span class="l">Netto-Rendite</span><span class="v r">1.83 %</span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">Annuität</span><span class="v">−1.086 €/mo</span></div>
+    <div class="k"><span class="l">Bewirtschaftung</span><span class="v">−220 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Cashflow netto</strong></span><span class="v r"><strong>-823 €/mo</strong></span></div>
+    <div class="k"><span class="l">+ Tilgung + AfA</span><span class="v g">+683 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Vermögensaufbau</strong></span><span class="v gold"><strong>+20 €/mo</strong></span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">NK-Bedarf <small>GrESt+Notar+Makler</small></span><span class="v">21.000 €</span></div>
+  </div>
+
+  <div class="bdg"><span class="b r">RESERVIERT</span><span class="b bl">Mühlenpark</span><span class="b bl">barrierearm</span><span class="b r">Faktor 33×!</span></div>
+
+  <div class="an">
+    <strong>Analyse:</strong> Premium-Lage Mühlenpark, aber 3.281€/m² ist Senioren-Premium. Als Anlage nicht tragbar. Bereits reserviert.
+    <div class="verd v-pass">❌ Reserviert + überteuert</div>
+  </div>
+
+  <div class="cta">
+    <a href="https://www.grimberg-immobilien.de/immobilien/erdgeschosswohnung-in-zeven-kauf-84" target="_blank" class="cta-btn cta-pri">
+      <svg class="cta-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Zum Exposé
+    </a>
+    <span class="src">Grimberg Zeven</span>
+  </div>
+</div>
+
+<div class="card" data-f="zeven immowelt score-22" data-score="22" data-rendite="1.92" data-preis="750000" data-cf="-2688">
+  <div class="src-bar src-listing">🔵 Suchindex · Immowelt · #16</div>
+  <div class="head">
+    <div class="tag"><span class="dot b"></span>Zeven · Stadt</div>
+    <div class="score s-D">D 22</div>
+  </div>
+  <div class="title">Herrschaftliche Villa 1925</div>
+  <div class="subtitle">
+    <span>📍 Zeven</span>
+    <span>🏗 1925</span>
+    <span>🏠 2 WE</span>
+  </div>
+
+  <div class="price">
+    <div class="price-main">750.000 €</div>
+    <div class="price-sub">
+      <div class="price-pqm">3.086 €/m²</div>
+      <div class="price-bench" style="color:var(--red)">+40% ÜBER MARKT</div>
+    </div>
+  </div>
+
+  <div class="met">
+    <div class="met-c"><div class="met-l">Wfl.</div><div class="met-v">243 m²</div></div>
+    <div class="met-c"><div class="met-l">Grund</div><div class="met-v">1.500 m²</div></div>
+    <div class="met-c"><div class="met-l">Faktor</div><div class="met-v r">31.2×</div></div>
+    <div class="met-c"><div class="met-l">Provision</div><div class="met-v">3.57%</div></div>
+  </div>
+
+  <div class="kpi">
+    <div class="k"><span class="l">Jahresmiete <small>geschätzt</small></span><span class="v o">24.081 €</span></div>
+    <div class="k"><span class="l">Miete/m²</span><span class="v">8.26 €</span></div>
+    <div class="k"><span class="l">Brutto-Rendite</span><span class="v r">3.21 %</span></div>
+    <div class="k"><span class="l">Netto-Rendite</span><span class="v r">1.92 %</span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">Annuität</span><span class="v">−3.878 €/mo</span></div>
+    <div class="k"><span class="l">Bewirtschaftung</span><span class="v">−817 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Cashflow netto</strong></span><span class="v r"><strong>-2.688 €/mo</strong></span></div>
+    <div class="k"><span class="l">+ Tilgung + AfA</span><span class="v g">+2.440 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Vermögensaufbau</strong></span><span class="v r"><strong>-683 €/mo</strong></span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">NK-Bedarf <small>GrESt+Notar+Makler</small></span><span class="v">79.275 €</span></div>
+  </div>
+
+  <div class="bdg"><span class="b bl">Premium-Villa</span><span class="b bl">parkähnlicher Garten</span><span class="b bl">Liebhaber-Objekt</span></div>
+
+  <div class="an">
+    <strong>Analyse:</strong> Premium-Liebhaberobjekt, nicht für Anlage. CF tief negativ. Nur als Eigennutz interessant.
+    <div class="verd v-pass">❌ Liebhaber, keine Anlage</div>
+  </div>
+
+  <div class="cta">
+    <a href="https://www.immowelt.de/suche/zeven/haeuser/kaufen" target="_blank" class="cta-btn cta-pri">
+      <svg class="cta-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Zum Exposé
+    </a>
+    <span class="src">Immowelt</span>
+  </div>
+</div>
+
+<div class="card" data-f="scheessel immowelt score-22" data-score="22" data-rendite="1.04" data-preis="850000" data-cf="-3748">
+  <div class="src-bar src-listing">🔵 Suchindex · Immowelt · #30</div>
+  <div class="head">
+    <div class="tag"><span class="dot b"></span>Scheeßel · 22km</div>
+    <div class="score s-D">D 22</div>
+  </div>
+  <div class="title">Reiterhof + 2-FH 21.661m²</div>
+  <div class="subtitle">
+    <span>📍 Scheeßel</span>
+    <span>🏗 k.A.</span>
+    <span>🏠 2 WE</span>
+  </div>
+
+  <div class="price">
+    <div class="price-main">850.000 €</div>
+    <div class="price-sub">
+      <div class="price-pqm">4.570 €/m²</div>
+      <div class="price-bench" style="color:var(--red)">+107% ÜBER MARKT</div>
+    </div>
+  </div>
+
+  <div class="met">
+    <div class="met-c"><div class="met-l">Wfl.</div><div class="met-v">186 m²</div></div>
+    <div class="met-c"><div class="met-l">Grund</div><div class="met-v">21.661 m²</div></div>
+    <div class="met-c"><div class="met-l">Faktor</div><div class="met-v r">46.1×</div></div>
+    <div class="met-c"><div class="met-l">Provision</div><div class="met-v">3.0%</div></div>
+  </div>
+
+  <div class="kpi">
+    <div class="k"><span class="l">Jahresmiete <small>geschätzt</small></span><span class="v o">18.420 €</span></div>
+    <div class="k"><span class="l">Miete/m²</span><span class="v">8.26 €</span></div>
+    <div class="k"><span class="l">Brutto-Rendite</span><span class="v r">2.17 %</span></div>
+    <div class="k"><span class="l">Netto-Rendite</span><span class="v r">1.04 %</span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">Annuität</span><span class="v">−4.395 €/mo</span></div>
+    <div class="k"><span class="l">Bewirtschaftung</span><span class="v">−769 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Cashflow netto</strong></span><span class="v r"><strong>-3.748 €/mo</strong></span></div>
+    <div class="k"><span class="l">+ Tilgung + AfA</span><span class="v g">+2.766 €/mo</span></div>
+    <div class="k"><span class="l"><strong>Vermögensaufbau</strong></span><span class="v r"><strong>-2.050 €/mo</strong></span></div>
+    <div class="kpi-div"></div>
+    <div class="k"><span class="l">NK-Bedarf <small>GrESt+Notar+Makler</small></span><span class="v">85.000 €</span></div>
+  </div>
+
+  <div class="bdg"><span class="b bl">Reiterhof Premium</span><span class="b bl">21.661m² Land</span><span class="b g">Pension+Zucht</span></div>
+
+  <div class="an">
+    <strong>Analyse:</strong> Premium-Pferdehof. Wert liegt im Reitbetrieb (Pension/Zucht), nicht in Wohnnutzung. Nur sinnvoll bei Pferde-Geschäftsplan.
+    <div class="verd v-pass">❌ Spezial-Use, keine Wohnanlage</div>
+  </div>
+
+  <div class="cta">
+    <a href="https://www.immowelt.de/expose/28esw5g" target="_blank" class="cta-btn cta-pri">
+      <svg class="cta-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Zum Exposé
+    </a>
+    <span class="src">Immowelt</span>
+  </div>
+</div>
+</div>
+
+<div class="contact">
+  <span class="contact-tag">📞 NÄCHSTE SCHRITTE</span>
+  <div style="flex:1;min-width:280px">
+    <strong>Stegeberg Immobilien</strong> · Kronshusen 5, 27395 Zeven · <strong>04281-81116</strong> · jens@stegeberg.de<br>
+    <span style="color:var(--muted);font-size:11px">→ 5 unserer Objekte. EIN Anruf, mehrere Termine.</span>
+  </div>
+  <div style="flex:1;min-width:240px">
+    <strong>Grimberg / Marinus Immobilien</strong> · Braueler Weg 3 · <strong>04281-71728-74</strong><br>
+    <span style="color:var(--muted);font-size:11px">→ Warteliste auf Bungalow Meinstedt 220k.</span>
+  </div>
+  <div style="flex:1;min-width:240px">
+    <strong>Sparkasse Rotenburg-Osterholz</strong> · Stephan Enghard · <strong>04281-940-8888</strong><br>
+    <span style="color:var(--muted);font-size:11px">→ Bonität klären + Schufa holen.</span>
+  </div>
+</div>
+
+<div class="foot">
+  <strong>Methodik & Datenherkunft</strong>
+  <div class="foot-g">
+    <div>
+      <strong style="color:var(--text-2)">Verifizierungs-Stufen</strong><br>
+      🟢 Live-Fetch verifiziert: Detail-Seiten am 09.05.2026 abgerufen<br>
+      🔵 Suchindex: Über Google site:expose Suchen bestätigt; Status vor Besichtigung anrufen
+    </div>
+    <div>
+      <strong style="color:var(--text-2)">Cashflow-Annahmen</strong><br>
+      Vollfinanzierung 100% · 3,80% / 25 Jahre · Bewirtschaftung 0,8% IH + 25€/WE Verw. + 4% Mietausfall + 0,025% Versich.
+    </div>
+    <div>
+      <strong style="color:var(--text-2)">Score-System (0-100)</strong><br>
+      A 75-95 = Kauf-Kandidat<br>
+      B 60-74 = mit Verhandlung<br>
+      C 40-59 = nur mit EK<br>
+      D unter 40 = aktuell nicht tragbar
+    </div>
+    <div>
+      <strong style="color:var(--text-2)">Marktdaten Q1/2026</strong><br>
+      Zeven: 2.220€/m² · Selsingen: 1.624€/m² · Bremervörde: 1.594€/m² · Rotenburg: 2.180€/m²<br>
+      Mietspiegel ROW: 8,69€/m² · Quellen: Immowelt PriceMap
+    </div>
+  </div>
+  <div style="margin-top:18px;padding-top:14px;border-top:1px solid var(--border)">
+    <strong style="color:var(--text-2)">Wichtige Disclaimer:</strong> Mietschätzungen 8,26€/m² (= 95% des Mietspiegels). IST-Mieten können abweichen. AfA mit 2% auf 75% Gebäudeanteil. Steuervorteil basiert auf 30% Grenzsteuersatz.<br>
+    <strong style="color:var(--text-2)">Lange Liste — kurze Empfehlung:</strong> Konzentriere dich auf die 7 A-Rating-Objekte. Davon: 3 Stegeberg-Objekte mit IST-Mieten + Mietsteigerungs-Potenzial sind die beste Mischung aus Substanz und Cashflow-Potenzial.
+  </div>
+</div>
+
+<script>
+function filt(t,b){
+  document.querySelectorAll('.ctrl-grp:first-child .btn').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');
+  document.querySelectorAll('.card').forEach(c=>{
+    const f=c.dataset.f||'';
+    let s = t==='alle' ? true 
+          : t==='cfpos' ? parseFloat(c.dataset.cf) >= 0 
+          : f.includes(t);
+    c.style.display = s ? '' : 'none';
+  });
+}
+function sort(t,b){
+  document.querySelectorAll('.ctrl-grp:last-child .btn').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');
+  const g=document.getElementById('grid');
+  const cs=Array.from(g.children);
+  cs.sort((a,b)=>{
+    if(t==='score')return parseFloat(b.dataset.score)-parseFloat(a.dataset.score);
+    if(t==='rendite')return parseFloat(b.dataset.rendite)-parseFloat(a.dataset.rendite);
+    if(t==='cf')return parseFloat(b.dataset.cf)-parseFloat(a.dataset.cf);
+    if(t==='preis')return parseFloat(a.dataset.preis)-parseFloat(b.dataset.preis);
+  });
+  cs.forEach(c=>g.appendChild(c));
+}
+</script>
+</body>
+</html>
