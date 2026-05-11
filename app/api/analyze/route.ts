@@ -9,26 +9,39 @@ export const runtime = 'nodejs'
 
 export async function POST(req: NextRequest) {
   try {
-    const { url } = await req.json()
+    const { url, pastedText } = await req.json()
     if (!url || typeof url !== 'string') {
       return NextResponse.json({ error: 'URL fehlt' }, { status: 400 })
     }
 
-    // 1) Fetch
-    const fetched = await fetchUrl(url)
-    if (!fetched.ok || !fetched.cleanText) {
-      return NextResponse.json(
-        {
-          error: 'URL konnte nicht geladen werden',
-          status: fetched.status,
-          detail: fetched.error,
-        },
-        { status: 422 }
-      )
+    // Wenn pastedText vorhanden → fetch überspringen, direkt analysieren
+    let textForAnalysis: string
+    let finalUrl = url
+    let fetchStrategy = 'paste'
+
+    if (pastedText && typeof pastedText === 'string' && pastedText.length > 100) {
+      textForAnalysis = pastedText.slice(0, 30000)
+    } else {
+      // 1) Fetch mit Multi-Strategy
+      const fetched = await fetchUrl(url)
+      if (!fetched.ok || !fetched.cleanText) {
+        return NextResponse.json(
+          {
+            error: 'URL konnte nicht geladen werden — Portal blockt Server-Anfragen',
+            status: fetched.status,
+            attempts: fetched.attempts,
+            hint: 'Wechsle zum Paste-Modus: Öffne das Inserat im Browser → Cmd+A → Cmd+C → in Paste-Feld einfügen',
+          },
+          { status: 422 }
+        )
+      }
+      textForAnalysis = fetched.cleanText
+      finalUrl = fetched.finalUrl
+      fetchStrategy = fetched.strategy
     }
 
     // 2) Extract via Claude
-    const extracted = await extractFromText(fetched.cleanText)
+    const extracted = await extractFromText(textForAnalysis)
 
     if (!extracted.price) {
       return NextResponse.json(
@@ -62,7 +75,7 @@ export async function POST(req: NextRequest) {
     // 5) Upsert in DB
     const sb = supabaseAdmin()
     const payload = {
-      url: fetched.finalUrl,
+      url: finalUrl,
       source: detectSource(url),
       status,
       title: extracted.title ?? null,
@@ -96,7 +109,7 @@ export async function POST(req: NextRequest) {
       cashflow_monthly: scoring.cashflow_monthly,
       score: scoring.score,
       rating: scoring.rating,
-      raw_data: { extracted, scoring },
+      raw_data: { extracted, scoring, fetchStrategy },
       last_checked_at: new Date().toISOString(),
     }
 
