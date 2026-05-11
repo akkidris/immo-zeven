@@ -5,6 +5,7 @@ import { calcScoring, type ScoringResult } from '@/lib/scoring'
 import EditObjectForm from '@/components/EditObjectForm'
 import DeleteObjectButton from '@/components/DeleteObjectButton'
 import InteractiveFinancing from '@/components/InteractiveFinancing'
+import Term from '@/components/Term'
 
 export const dynamic = 'force-dynamic'
 
@@ -118,11 +119,11 @@ export default async function ObjectDetail({ params }: { params: Promise<{ id: s
                 </p>
               </div>
               <div className="flex flex-col items-end gap-2">
-                <div className={`px-3 py-1.5 text-sm font-bold rounded-full border ${ratingClass[scoring.rating]}`}>
-                  {scoring.rating} · Score {scoring.score}/100
+                <div className={`px-3 py-1.5 text-sm font-bold rounded-full border ${ratingClass[scoring.rating]} flex items-center gap-1`}>
+                  <Term k="score">{`${scoring.rating} · Score ${scoring.score}/100`}</Term>
                 </div>
-                <div className={`px-3 py-1 text-xs font-bold rounded-full ${verdictClass[scoring.verdict]}`}>
-                  {scoring.verdict}
+                <div className={`px-3 py-1 text-xs font-bold rounded-full ${verdictClass[scoring.verdict]} flex items-center gap-1`}>
+                  <Term k="verdict">{scoring.verdict}</Term>
                 </div>
               </div>
             </div>
@@ -134,12 +135,13 @@ export default async function ObjectDetail({ params }: { params: Promise<{ id: s
             <div className="mt-5 grid grid-cols-2 md:grid-cols-4 gap-3">
               <QuickStat label="Kaufpreis" value={eur(object.price)} accent="primary" />
               <QuickStat
+                termKey="cashflow"
                 label="Cashflow / Mo (0€ EK)"
                 value={eur(scoring.cashflow_monthly)}
                 accent={scoring.cashflow_monthly > 0 ? 'positive' : 'negative'}
               />
-              <QuickStat label="Netto-Rendite" value={num(scoring.netto_yield, '%')} accent={(scoring.netto_yield ?? 0) > 5 ? 'positive' : undefined} />
-              <QuickStat label="Mietfaktor" value={scoring.factor ? `${scoring.factor.toFixed(1)}×` : '—'} accent={(scoring.factor ?? 99) < 15 ? 'positive' : undefined} />
+              <QuickStat termKey="netto_yield" label="Netto-Rendite" value={num(scoring.netto_yield, '%')} accent={(scoring.netto_yield ?? 0) > 5 ? 'positive' : undefined} />
+              <QuickStat termKey="factor" label="Mietfaktor" value={scoring.factor ? `${scoring.factor.toFixed(1)}×` : '—'} accent={(scoring.factor ?? 99) < 15 ? 'positive' : undefined} />
             </div>
           </div>
         </section>
@@ -191,12 +193,12 @@ export default async function ObjectDetail({ params }: { params: Promise<{ id: s
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-slate-200 text-left text-xs uppercase text-slate-500">
-                  <th className="py-2 pr-3 font-medium">Eigenkapital</th>
+                  <th className="py-2 pr-3 font-medium"><Term k="equity">Eigenkapital</Term></th>
                   <th className="py-2 px-3 font-medium">Darlehen</th>
-                  <th className="py-2 px-3 font-medium">LTV</th>
-                  <th className="py-2 px-3 font-medium">Rate/Mo</th>
-                  <th className="py-2 px-3 font-medium">CF /Mo</th>
-                  <th className="py-2 px-3 font-medium">CF nach Steuer</th>
+                  <th className="py-2 px-3 font-medium"><Term k="ltv">LTV</Term></th>
+                  <th className="py-2 px-3 font-medium"><Term k="annuity">Rate/Mo</Term></th>
+                  <th className="py-2 px-3 font-medium"><Term k="cashflow">CF /Mo</Term></th>
+                  <th className="py-2 px-3 font-medium"><Term k="cashflow_after_tax">CF nach Steuer</Term></th>
                 </tr>
               </thead>
               <tbody>
@@ -250,7 +252,7 @@ export default async function ObjectDetail({ params }: { params: Promise<{ id: s
         )}
 
         {/* Sensitivity */}
-        <Card title="🔬 Sensitivity — Was wenn?">
+        <Card title="🔬 Sensitivity-Analyse — Was wenn?">
           <div className="grid md:grid-cols-3 gap-3">
             <SensitivityRow label="Miete −10%" value={scoring.sensitivity.rent_minus_10} />
             <SensitivityRow label="Standard (Basis)" value={scoring.cashflow_monthly} highlight />
@@ -266,36 +268,36 @@ export default async function ObjectDetail({ params }: { params: Promise<{ id: s
         <section className="grid md:grid-cols-2 gap-4">
           <Card title="📊 Stammdaten">
             <Row label="Kaufpreis" value={eur(object.price)} bold />
-            <Row label="Nebenkosten (10,57%)" value={eur(scoring.closing_costs)} />
-            <Row label="Gesamtinvestition" value={eur(scoring.total_investment)} bold />
+            <Row termKey="closing_costs" label="Nebenkosten (10,57%)" value={eur(scoring.closing_costs)} />
+            <Row termKey="total_investment" label="Gesamtinvestition" value={eur(scoring.total_investment)} bold />
             <Divider />
             <Row label="Wohnfläche" value={num(object.living_area, ' m²')} />
             <Row label="Grundstück" value={num(object.plot_area, ' m²')} />
-            <Row label="Preis/m² Wohnen" value={eur(scoring.price_per_sqm)} />
+            <Row termKey="price_per_sqm" label="Preis/m² Wohnen" value={eur(scoring.price_per_sqm)} />
             <Row label="vs. Markt (2.184€)" value={pct(scoring.price_vs_market_pct, 0)} className={(scoring.price_vs_market_pct ?? 0) < 0 ? 'text-emerald-700' : 'text-rose-700'} />
             <Divider />
-            <Row label="Wohneinheiten" value={object.units?.toString() ?? '—'} />
+            <Row termKey="units" label="Wohneinheiten" value={object.units?.toString() ?? '—'} />
             <Row label="Zimmer" value={object.rooms?.toString() ?? '—'} />
             <Row label="Baujahr" value={object.year_built?.toString() ?? '—'} />
             <Row label="Letzte Sanierung" value={(object.last_major_renovation ?? object.year_renovated)?.toString() ?? '—'} />
             <Row label="Heizung" value={object.heating_type ?? '—'} />
-            <Row label="Energiekennwert" value={object.energy_kwh ? `${object.energy_kwh} kWh/m²a` : (object.energy_class ?? '—')} />
+            <Row termKey="energy_kwh" label="Energiekennwert" value={object.energy_kwh ? `${object.energy_kwh} kWh/m²a` : (object.energy_class ?? '—')} />
           </Card>
 
           <Card title="💵 Cashflow-Aufbau (Jahr)">
-            <Row label="Jahres-Kaltmiete" value={eur(object.annual_rent)} bold />
-            <Row label="− Instandhaltung (8%)" value={`−${eur((object.annual_rent ?? 0) * 0.08)}`} className="text-rose-700" />
-            <Row label="− Verwaltung (5%)" value={`−${eur((object.annual_rent ?? 0) * 0.05)}`} className="text-rose-700" />
-            <Row label="− Mietausfall (3%)" value={`−${eur((object.annual_rent ?? 0) * 0.03)}`} className="text-rose-700" />
+            <Row termKey="cold_rent" label="Jahres-Kaltmiete" value={eur(object.annual_rent)} bold />
+            <Row termKey="maintenance" label="− Instandhaltung (8%)" value={`−${eur((object.annual_rent ?? 0) * 0.08)}`} className="text-rose-700" />
+            <Row termKey="management_cost" label="− Verwaltung (5%)" value={`−${eur((object.annual_rent ?? 0) * 0.05)}`} className="text-rose-700" />
+            <Row termKey="vacancy_rate" label="− Mietausfall (3%)" value={`−${eur((object.annual_rent ?? 0) * 0.03)}`} className="text-rose-700" />
             <Row label="− Versicherung" value={`−${eur((object.living_area ?? 0) * 0.5)}`} className="text-rose-700" />
             <Row label="= Netto-Miete / Jahr" value={eur(scoring.yearly_net_rent)} bold />
             <Divider />
-            <Row label="Brutto-Rendite" value={num(scoring.brutto_yield, '%')} />
-            <Row label="Netto-Rendite" value={num(scoring.netto_yield, '%')} bold />
-            <Row label="Mietfaktor" value={scoring.factor ? `${scoring.factor.toFixed(1)}×` : '—'} />
-            <Row label="IST-Miete €/m²" value={scoring.rent_per_sqm ? `${scoring.rent_per_sqm.toFixed(2)} €` : '—'} />
+            <Row termKey="brutto_yield" label="Brutto-Rendite" value={num(scoring.brutto_yield, '%')} />
+            <Row termKey="netto_yield" label="Netto-Rendite" value={num(scoring.netto_yield, '%')} bold />
+            <Row termKey="factor" label="Mietfaktor" value={scoring.factor ? `${scoring.factor.toFixed(1)}×` : '—'} />
+            <Row termKey="rent_per_sqm" label="IST-Miete €/m²" value={scoring.rent_per_sqm ? `${scoring.rent_per_sqm.toFixed(2)} €` : '—'} />
             <Divider />
-            <Row label="AfA-Vorteil / Jahr" value={`+${eur(scoring.tax_savings_yearly)}`} className="text-emerald-700" />
+            <Row termKey="afa" label="AfA-Vorteil / Jahr" value={`+${eur(scoring.tax_savings_yearly)}`} className="text-emerald-700" />
           </Card>
         </section>
 
@@ -375,15 +377,18 @@ function Card({ title, children, tone, className = '' }: {
   )
 }
 
-function Row({ label, value, bold = false, className = '' }: {
+function Row({ label, value, bold = false, className = '', termKey }: {
   label: string
   value: string
   bold?: boolean
   className?: string
+  termKey?: string
 }) {
   return (
     <div className="flex justify-between py-1.5 text-sm">
-      <span className="text-slate-500">{label}</span>
+      <span className="text-slate-500">
+        {termKey ? <Term k={termKey}>{label}</Term> : label}
+      </span>
       <span className={`${bold ? 'font-semibold' : ''} text-slate-900 ${className}`}>{value}</span>
     </div>
   )
@@ -393,10 +398,11 @@ function Divider() {
   return <div className="my-2 border-t border-slate-100" />
 }
 
-function QuickStat({ label, value, accent }: {
+function QuickStat({ label, value, accent, termKey }: {
   label: string
   value: string
   accent?: 'primary' | 'positive' | 'negative'
+  termKey?: string
 }) {
   const cls =
     accent === 'positive' ? 'text-emerald-700' :
@@ -404,7 +410,9 @@ function QuickStat({ label, value, accent }: {
     'text-slate-900'
   return (
     <div className="bg-slate-50 rounded-xl p-3">
-      <div className="text-xs uppercase tracking-wide text-slate-500 font-medium">{label}</div>
+      <div className="text-xs uppercase tracking-wide text-slate-500 font-medium flex items-center gap-1">
+        {termKey ? <Term k={termKey}>{label}</Term> : label}
+      </div>
       <div className={`text-lg font-bold mt-0.5 ${cls}`}>{value}</div>
     </div>
   )

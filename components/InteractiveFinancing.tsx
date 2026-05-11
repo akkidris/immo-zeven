@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react'
 import { useSettings } from '@/lib/settings'
+import Term from '@/components/Term'
 
 type Props = {
   price: number
@@ -118,6 +119,7 @@ export default function InteractiveFinancing({ price, livingArea, annualRent, un
 
       <div className="grid md:grid-cols-3 gap-4 mb-5">
         <Slider
+          termKey="equity"
           label="Eigenkapital"
           value={equity}
           unit="€"
@@ -128,6 +130,7 @@ export default function InteractiveFinancing({ price, livingArea, annualRent, un
           formatter={(v) => eur(v)}
         />
         <Slider
+          termKey="interest_rate"
           label="Zinssatz"
           value={rate}
           unit="%"
@@ -138,6 +141,7 @@ export default function InteractiveFinancing({ price, livingArea, annualRent, un
           formatter={(v) => v.toFixed(1) + '%'}
         />
         <Slider
+          termKey="amortization"
           label="Tilgung"
           value={tilg}
           unit="%"
@@ -157,8 +161,8 @@ export default function InteractiveFinancing({ price, livingArea, annualRent, un
             onChange={(e) => setHouseHack(e.target.checked)}
             className="w-4 h-4 accent-slate-900"
           />
-          <span>
-            <strong>House Hacking</strong> — eine Einheit selbst bewohnen, andere {units - 1} vermieten
+          <span className="flex items-center gap-1">
+            <strong><Term k="house_hacking">House Hacking</Term></strong> — eine Einheit selbst bewohnen, andere {units - 1} vermieten
           </span>
         </label>
       )}
@@ -166,23 +170,27 @@ export default function InteractiveFinancing({ price, livingArea, annualRent, un
       {/* Headline-Ergebnisse */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
         <Stat
+          termKey="annuity"
           label="Monatsrate"
           value={eur(result.monthlyRate)}
           hint={`${result.ltv.toFixed(0)}% LTV`}
         />
         <Stat
+          termKey={houseHack ? 'house_hacking' : 'cashflow_after_tax'}
           label={houseHack ? 'Wohnkosten/Mo' : 'Cashflow/Mo'}
           value={houseHack ? eur(result.ownLivingCost) : eur(result.cashflowAfterTax)}
           accent={houseHack ? 'primary' : cfPositive ? 'positive' : 'negative'}
           hint={houseHack ? 'effektiv für dich' : 'nach Steuer'}
         />
         <Stat
+          termKey="wealth_buildup"
           label="Vermögensaufbau/J"
           value={`+${eur(result.wealthBuildup)}`}
           accent="positive"
           hint="Tilgung + AfA-Vorteil"
         />
         <Stat
+          termKey="break_even"
           label="Break-Even"
           value={result.breakEvenYears ? `${result.breakEvenYears} Jahre` : cfPositive ? 'sofort' : '—'}
           hint="ab dann CF positiv"
@@ -218,6 +226,7 @@ function Slider({
   step,
   onChange,
   formatter,
+  termKey,
 }: {
   label: string
   value: number
@@ -227,11 +236,14 @@ function Slider({
   step: number
   onChange: (v: number) => void
   formatter: (v: number) => string
+  termKey?: string
 }) {
   return (
     <div>
       <div className="flex items-baseline justify-between mb-1">
-        <label className="text-xs font-medium text-slate-700">{label}</label>
+        <label className="text-xs font-medium text-slate-700 flex items-center gap-1">
+          {termKey ? <Term k={termKey}>{label}</Term> : label}
+        </label>
         <span className="text-sm font-bold text-slate-900">{formatter(value)}</span>
       </div>
       <input
@@ -256,11 +268,13 @@ function Stat({
   value,
   hint,
   accent,
+  termKey,
 }: {
   label: string
   value: string
   hint?: string
   accent?: 'positive' | 'negative' | 'primary'
+  termKey?: string
 }) {
   const valCls =
     accent === 'positive'
@@ -270,7 +284,9 @@ function Stat({
       : 'text-slate-900'
   return (
     <div className="bg-slate-50 rounded-xl p-3">
-      <div className="text-xs uppercase tracking-wide text-slate-500 font-medium">{label}</div>
+      <div className="text-xs uppercase tracking-wide text-slate-500 font-medium flex items-center gap-1">
+        {termKey ? <Term k={termKey}>{label}</Term> : label}
+      </div>
       <div className={`text-lg font-bold mt-0.5 ${valCls}`}>{value}</div>
       {hint && <div className="text-xs text-slate-500 mt-0.5">{hint}</div>}
     </div>

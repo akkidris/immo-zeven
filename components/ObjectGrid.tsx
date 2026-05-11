@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import type { ObjectRow } from '@/lib/supabase'
+import Term from '@/components/Term'
 
 type SortKey = 'score' | 'cashflow' | 'price_asc' | 'yield'
 type FilterKey = 'all' | 'cf_positive' | 'a_rated' | 'zeven' | 'mfh'
@@ -114,17 +115,23 @@ export default function ObjectGrid({ objects }: { objects: ObjectRow[] }) {
                   <div className="font-semibold text-slate-900">{eur(o.price)}</div>
                 </div>
                 <div>
-                  <div className="text-xs text-slate-500">Cashflow/Mo</div>
+                  <div className="text-xs text-slate-500 flex items-center gap-1">
+                    <Term k="cashflow">Cashflow/Mo</Term>
+                  </div>
                   <div className={`font-semibold ${o.cashflow_monthly && o.cashflow_monthly > 0 ? 'text-emerald-700' : 'text-rose-700'}`}>
                     {eur(o.cashflow_monthly)}
                   </div>
                 </div>
                 <div>
-                  <div className="text-xs text-slate-500">Preis/m²</div>
+                  <div className="text-xs text-slate-500 flex items-center gap-1">
+                    <Term k="price_per_sqm">Preis/m²</Term>
+                  </div>
                   <div className="text-slate-900">{eur(o.price_per_sqm)}</div>
                 </div>
                 <div>
-                  <div className="text-xs text-slate-500">Netto-Rendite</div>
+                  <div className="text-xs text-slate-500 flex items-center gap-1">
+                    <Term k="netto_yield">Netto-Rendite</Term>
+                  </div>
                   <div className={`${o.netto_yield && o.netto_yield > 5 ? 'text-emerald-700 font-medium' : 'text-slate-900'}`}>
                     {num(o.netto_yield, '%')}
                   </div>

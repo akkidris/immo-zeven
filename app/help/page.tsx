@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { glossary } from '@/lib/glossary'
 
 export const metadata = {
   title: 'Hilfe & Anleitung · ImmoAgent Pro',
@@ -272,6 +273,32 @@ export default function HelpPage() {
             q="Wie aktualisiere ich ein Objekt manuell?"
             a="Detail-Seite → 'Daten korrigieren' Section → Werte ändern → 'Speichern + neu berechnen'. Wird im Verlauf festgehalten."
           />
+        </Card>
+
+        {/* Glossar */}
+        <Card title="📖 Glossar — alle Begriffe alphabetisch">
+          <p className="text-sm text-slate-600 mb-4">
+            Im ganzen Tool findest du <span className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-slate-200 text-slate-600 text-[10px] font-bold mx-1">?</span>-Symbole neben Fachbegriffen.
+            Klick drauf — Erklärung erscheint. Hier alle Begriffe komplett:
+          </p>
+          <div className="grid md:grid-cols-2 gap-4">
+            {Object.entries(glossary)
+              .sort(([, a], [, b]) => a.title.localeCompare(b.title))
+              .map(([key, e]) => (
+                <div key={key} className="bg-slate-50 rounded-lg p-3 border border-slate-100">
+                  <div className="flex items-baseline gap-2 mb-1">
+                    <h3 className="font-semibold text-slate-900 text-sm">{e.title}</h3>
+                    {e.short && <span className="text-xs text-slate-500 font-mono">({e.short})</span>}
+                  </div>
+                  <p className="text-xs text-slate-600 leading-relaxed">{e.description}</p>
+                  {e.formula && (
+                    <div className="mt-2 text-[11px] font-mono text-slate-500">
+                      <span className="text-slate-400">Formel:</span> {e.formula}
+                    </div>
+                  )}
+                </div>
+              ))}
+          </div>
         </Card>
 
         {/* Footer */}
