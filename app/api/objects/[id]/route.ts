@@ -29,6 +29,15 @@ export async function PATCH(req: NextRequest, ctx: { params: Promise<{ id: strin
     energy_kwh: merged.energy_kwh,
   })
 
+  // Integer-Felder runden vor Insert (Schema-Spalten sind 'integer')
+  const INT_FIELDS = ['units', 'rooms', 'year_built', 'year_renovated', 'last_major_renovation', 'heating_year']
+  for (const f of INT_FIELDS) {
+    if (body[f] !== undefined && body[f] !== null && body[f] !== '') {
+      const n = Number(body[f])
+      body[f] = isNaN(n) ? null : Math.round(n)
+    }
+  }
+
   const update = {
     ...body,
     price_per_sqm: scoring.price_per_sqm,

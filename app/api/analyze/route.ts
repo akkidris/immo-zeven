@@ -72,6 +72,10 @@ export async function POST(req: NextRequest) {
     else if (statusText?.includes('reserv')) status = 'reserved'
     else if (statusText?.includes('anfragestop')) status = 'reserved'
 
+    // Integer-Felder runden (DB-Spalten sind 'integer', KI gibt manchmal Dezimalzahlen)
+    const toInt = (v: number | null | undefined): number | null =>
+      v == null || isNaN(Number(v)) ? null : Math.round(Number(v))
+
     // 5) Upsert in DB
     const sb = supabaseAdmin()
     const payload = {
@@ -86,15 +90,15 @@ export async function POST(req: NextRequest) {
       price: extracted.price ?? null,
       living_area: extracted.living_area ?? null,
       plot_area: extracted.plot_area ?? null,
-      units: extracted.units ?? null,
-      rooms: extracted.rooms ?? null,
-      year_built: extracted.year_built ?? null,
-      year_renovated: extracted.year_renovated ?? null,
-      last_major_renovation: extracted.last_major_renovation ?? null,
+      units: toInt(extracted.units),
+      rooms: toInt(extracted.rooms),
+      year_built: toInt(extracted.year_built),
+      year_renovated: toInt(extracted.year_renovated),
+      last_major_renovation: toInt(extracted.last_major_renovation),
+      heating_year: toInt(extracted.heating_year),
       energy_class: extracted.energy_class ?? null,
       energy_kwh: extracted.energy_kwh ?? null,
       heating_type: extracted.heating_type ?? null,
-      heating_year: extracted.heating_year ?? null,
       annual_rent: extracted.annual_rent ?? null,
       warm_rent: extracted.warm_rent ?? null,
       is_rented: extracted.is_rented ?? null,
