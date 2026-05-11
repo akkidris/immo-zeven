@@ -41,11 +41,15 @@ export async function POST(req: NextRequest) {
     const scoring = calcScoring({
       price: extracted.price,
       living_area: extracted.living_area,
+      plot_area: extracted.plot_area,
       annual_rent: extracted.annual_rent,
+      warm_rent: extracted.warm_rent,
       units: extracted.units,
       year_built: extracted.year_built,
       city: extracted.city,
       is_rented: extracted.is_rented,
+      commercial_share: extracted.commercial_share,
+      energy_kwh: extracted.energy_kwh,
     })
 
     // 4) Status aus Text ableiten
@@ -73,9 +77,17 @@ export async function POST(req: NextRequest) {
       rooms: extracted.rooms ?? null,
       year_built: extracted.year_built ?? null,
       year_renovated: extracted.year_renovated ?? null,
+      last_major_renovation: extracted.last_major_renovation ?? null,
       energy_class: extracted.energy_class ?? null,
+      energy_kwh: extracted.energy_kwh ?? null,
+      heating_type: extracted.heating_type ?? null,
+      heating_year: extracted.heating_year ?? null,
       annual_rent: extracted.annual_rent ?? null,
+      warm_rent: extracted.warm_rent ?? null,
       is_rented: extracted.is_rented ?? null,
+      commercial_share: extracted.commercial_share ?? null,
+      features: extracted.features ?? null,
+      og_image: extracted.og_image ?? null,
       price_per_sqm: scoring.price_per_sqm,
       factor: scoring.factor,
       brutto_yield: scoring.brutto_yield,

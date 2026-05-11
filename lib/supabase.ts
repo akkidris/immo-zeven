@@ -28,8 +28,17 @@ export type ObjectRow = {
   year_built: number | null
   year_renovated: number | null
   energy_class: string | null
+  last_major_renovation: number | null
+  energy_kwh: number | null
+  heating_type: string | null
+  heating_year: number | null
   annual_rent: number | null
+  warm_rent: number | null
   is_rented: boolean | null
+  commercial_share: number | null
+  features: string[] | null
+  og_image: string | null
+  user_notes: string | null
   price_per_sqm: number | null
   factor: number | null
   brutto_yield: number | null
