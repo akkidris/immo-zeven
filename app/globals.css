@@ -12,7 +12,9 @@
   --font-mono: var(--font-geist-mono);
 }
 
-/* App ist auf Light-Mode designt - System Dark-Mode komplett überschreiben */
+/* App ist auf Light-Mode designt - System Dark-Mode komplett überschreiben.
+   Color-scheme + html/body color reicht — Tailwind-Klassen wie text-white,
+   text-slate-900 etc. erben und greifen normal weiter. */
 html {
   color-scheme: light only;
 }
@@ -23,17 +25,8 @@ html, body {
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* Garantiert lesbare Text-Hierarchie - überschreibt System-Theme */
-h1, h2, h3, h4, h5, h6 {
-  color: #0f172a;
-}
-
-p, li, span, div, label, a, td, th {
-  color: inherit;
-}
-
 /* Prose-Wrapper für Methodik/About-Seite */
-.prose, .prose * {
+.prose {
   color: #334155;
 }
 .prose h1, .prose h2, .prose h3, .prose strong {
@@ -56,15 +49,12 @@ input::placeholder, textarea::placeholder {
   opacity: 1;
 }
 
-/* Disabled-Status */
 input:disabled, textarea:disabled, select:disabled {
   color: #64748b;
   background-color: #f1f5f9;
 }
 
-/* Buttons: KEIN Color-Override - Tailwind text-white/text-slate-X soll greifen */
-
-/* Number-Input Spin-Buttons in WebKit */
+/* Number-Input Spin-Buttons in WebKit ausblenden */
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
