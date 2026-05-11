@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { supabaseAdmin } from '@/lib/supabase'
 import AnalyzeForm from '@/components/AnalyzeForm'
 import ObjectGrid from '@/components/ObjectGrid'
+import SettingsPanel from '@/components/SettingsPanel'
 
 export const revalidate = 60
 export const dynamic = 'force-dynamic'
@@ -35,10 +36,12 @@ export default async function Home() {
             <h1 className="text-xl font-bold text-slate-900">ImmoAgent Pro</h1>
             <p className="text-xs text-slate-500">Live-Marktanalyse Zeven + Umkreis</p>
           </div>
-          <nav className="flex gap-3 text-sm">
-            <Link href="/" className="text-slate-700 hover:text-slate-900">Übersicht</Link>
+          <nav className="flex items-center gap-4 text-sm">
+            <Link href="/" className="text-slate-700 hover:text-slate-900 font-medium">Übersicht</Link>
+            <Link href="/help" className="text-slate-500 hover:text-slate-900">Hilfe</Link>
             <Link href="/expired" className="text-slate-500 hover:text-slate-900">Archiv</Link>
             <Link href="/about" className="text-slate-500 hover:text-slate-900">Methodik</Link>
+            <SettingsPanel />
           </nav>
         </div>
       </header>

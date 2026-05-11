@@ -4,6 +4,7 @@ import { supabaseAdmin } from '@/lib/supabase'
 import { calcScoring, type ScoringResult } from '@/lib/scoring'
 import EditObjectForm from '@/components/EditObjectForm'
 import DeleteObjectButton from '@/components/DeleteObjectButton'
+import InteractiveFinancing from '@/components/InteractiveFinancing'
 
 export const dynamic = 'force-dynamic'
 
@@ -80,7 +81,7 @@ export default async function ObjectDetail({ params }: { params: Promise<{ id: s
           <Link href="/" className="text-sm text-slate-600 hover:text-slate-900">
             ← Übersicht
           </Link>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             <a
               href={object.url}
               target="_blank"
@@ -89,6 +90,7 @@ export default async function ObjectDetail({ params }: { params: Promise<{ id: s
             >
               Original ↗
             </a>
+            <Link href="/help" className="text-sm text-slate-500 hover:text-slate-900">Hilfe</Link>
             <DeleteObjectButton id={object.id} />
           </div>
         </div>
@@ -174,8 +176,17 @@ export default async function ObjectDetail({ params }: { params: Promise<{ id: s
           </Card>
         </section>
 
-        {/* Finanzierungs-Szenarien */}
-        <Card title="💰 Finanzierungs-Szenarien">
+        {/* Interaktiver Finanzierungs-Rechner */}
+        <InteractiveFinancing
+          price={object.price ?? 0}
+          livingArea={object.living_area ?? 0}
+          annualRent={object.annual_rent ?? 0}
+          units={object.units ?? 1}
+        />
+
+        {/* Schnellvergleich Eigenkapital-Szenarien */}
+        <Card title="📊 Schnellvergleich Eigenkapital-Stufen">
+          <p className="text-xs text-slate-500 mb-3">Standardwerte aus deinem Profil. Für individuelle Anpassung den interaktiven Rechner oben nutzen.</p>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
@@ -186,16 +197,12 @@ export default async function ObjectDetail({ params }: { params: Promise<{ id: s
                   <th className="py-2 px-3 font-medium">Rate/Mo</th>
                   <th className="py-2 px-3 font-medium">CF /Mo</th>
                   <th className="py-2 px-3 font-medium">CF nach Steuer</th>
-                  <th className="py-2 px-3 font-medium">Tilg+AfA/Jahr</th>
                 </tr>
               </thead>
               <tbody>
                 {scoring.scenarios.map((s, i) => (
-                  <tr key={i} className={`border-b border-slate-100 ${i === 0 ? 'bg-amber-50/50' : ''}`}>
-                    <td className="py-2.5 pr-3 font-medium">
-                      {eur(s.equity)}
-                      {i === 0 && <span className="ml-1 text-xs text-amber-700">(deine Situation)</span>}
-                    </td>
+                  <tr key={i} className="border-b border-slate-100">
+                    <td className="py-2.5 pr-3 font-medium">{eur(s.equity)}</td>
                     <td className="py-2.5 px-3">{eur(s.loan)}</td>
                     <td className="py-2.5 px-3">{s.loan_to_value.toFixed(0)}%</td>
                     <td className="py-2.5 px-3">{eur(s.monthly_rate)}</td>
@@ -205,15 +212,11 @@ export default async function ObjectDetail({ params }: { params: Promise<{ id: s
                     <td className={`py-2.5 px-3 font-semibold ${s.cashflow_after_tax > 0 ? 'text-emerald-700' : 'text-rose-700'}`}>
                       {eur(s.cashflow_after_tax)}
                     </td>
-                    <td className="py-2.5 px-3 text-emerald-700">+{eur(s.yearly_buildup)}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-          <p className="text-xs text-slate-500 mt-3">
-            Zins 3,8% · Tilgung 2% · Steuersatz 42% · CF nach Steuer berücksichtigt Verlustverrechnung mit AfA
-          </p>
         </Card>
 
         {/* House Hacking */}
