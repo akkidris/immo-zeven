@@ -12,13 +12,38 @@
   --font-mono: var(--font-geist-mono);
 }
 
-/* App ist auf Light-Mode designt - System Dark-Mode überschreiben */
+/* App ist auf Light-Mode designt - System Dark-Mode komplett überschreiben */
+html {
+  color-scheme: light only;
+}
+
 html, body {
   background: var(--background);
   color: var(--foreground);
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  color-scheme: light;
 }
+
+/* Garantiert lesbare Text-Hierarchie - überschreibt System-Theme */
+h1, h2, h3, h4, h5, h6 {
+  color: #0f172a;
+}
+
+p, li, span, div, label, a, td, th {
+  color: inherit;
+}
+
+/* Prose-Wrapper für Methodik/About-Seite */
+.prose, .prose * {
+  color: #334155;
+}
+.prose h1, .prose h2, .prose h3, .prose strong {
+  color: #0f172a;
+}
+.prose h1 { font-size: 1.875rem; font-weight: 700; margin-top: 1rem; margin-bottom: 1rem; }
+.prose h2 { font-size: 1.25rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+.prose p { margin-bottom: 0.75rem; line-height: 1.6; }
+.prose ul { list-style: disc; margin-left: 1.5rem; margin-bottom: 1rem; }
+.prose li { margin-bottom: 0.25rem; }
 
 /* Form-Elemente: garantiert lesbar, unabhängig von System-Theme */
 input, textarea, select {
